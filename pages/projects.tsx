@@ -1,7 +1,7 @@
-const HomePage = () => {
+const ProjectsPage = () => {
   return (
     <>
-      <div className="text-3xl">{"Jaro's Personal Page"}</div>
+      <div className="text-3xl">Projects</div>
       <div>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, sed.
         Distinctio earum praesentium aliquam eveniet, quisquam itaque natus
@@ -25,4 +25,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default ProjectsPage;
