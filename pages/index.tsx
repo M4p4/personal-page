@@ -1,25 +1,43 @@
 const HomePage = () => {
   return (
     <>
-      <div className="text-3xl">{"Jaro's Personal Page"}</div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, sed.
-        Distinctio earum praesentium aliquam eveniet, quisquam itaque natus
-        maxime possimus dignissimos amet aperiam beatae, necessitatibus aliquid
-        placeat tempora repellendus ipsam! Eum doloribus provident, pariatur
-        voluptatibus nihil itaque ipsam, quos impedit incidunt doloremque
-        placeat earum eius! Aut dicta quae dolorem debitis, nihil expedita
-        consequatur quisquam eveniet veniam explicabo sit quod ut. Numquam
-        fugiat alias consequatur maiores non eius quidem adipisci deleniti
-        molestias, sed exercitationem dolores illum assumenda obcaecati aperiam
-        eveniet ipsum quasi ut in aliquam saepe! Consequuntur cupiditate
-        similique autem iure? Neque pariatur tenetur placeat aliquid rem
-        nesciunt assumenda vitae ducimus cumque repellendus et, omnis dolorum,
-        nisi illo cum magnam modi fuga porro. Dolorum voluptatem facere minus
-        obcaecati quas cumque eveniet! Dicta rerum culpa blanditiis aspernatur,
-        cum totam quis praesentium nostrum modi alias nam facere laboriosam, a
-        ipsa dolore saepe doloribus temporibus accusantium ratione id sed. Error
-        hic exercitationem vel enim?
+      <div className="rounded-md h-72 w-full bg-orange-200"></div>
+      <div className="bg-transparent text-center w-full p-5">
+        I am currently working in 🇵🇭 but soon i am back in 🇩🇪
+      </div>
+
+      <div className="px-2 md:px-10">
+        <div className="flex flex-row justify-between items-center">
+          <div className="flex flex-col py-2">
+            <h1 className="text-4xl font-semibold">Jaro Ratz</h1>
+            <p>Web Developer and SEO Specialist</p>
+          </div>
+          <div className="rounded-full h-24 w-24 min-h-25 bg-orange-200"></div>
+        </div>
+
+        <div className="py-4">
+          <h2 className="text-xl font-semibold">Work</h2>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            Doloremque, illo accusantium, facilis error ab molestias ratione
+            excepturi odit sapiente ex libero, inventore provident quidem minus?
+            Assumenda nemo aliquam qui excepturi.
+          </p>
+        </div>
+
+        <div className="py-4">
+          <h2 className="text-xl font-semibold">Latest Posts</h2>
+          <div className="flex flex-col md:flex-row gap-6 justify-around items-center">
+            <div className="flex flex-col w-full">
+              <div className="rounded-md h-36 w-full bg-orange-200"></div>
+              <div>This is a post title example</div>
+            </div>
+            <div className="flex flex-col w-full">
+              <div className="rounded-md h-36 w-full bg-orange-200"></div>
+              <div>This is a post title example</div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
