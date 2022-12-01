@@ -19,7 +19,7 @@ const NavbarItem: FC<Props> = ({
     isMobile
       ? 'text-center dark:bg-zinc-700 dark:hover:bg-zinc-600  bg-orange-300 hover:bg-orange-200 rounded-md py-2 mb-1'
       : 'p-2 hover:bg-orange-200 dark:hover:bg-zinc-800 rounded-md hidden md:flex',
-    isActive ? 'font-semibold' : ''
+    isActive ? 'font-semibold dark:text-zinc-50' : 'dark:text-zinc-100'
   );
 
   return (
