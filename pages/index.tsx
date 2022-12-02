@@ -28,7 +28,7 @@ const HomePage = () => {
             <h1 className="text-4xl font-semibold dark:text-zinc-100">
               Jaro Ratz
             </h1>
-            <p>Web Developer and SEO Specialist</p>
+            <p className="mt-1">Web Developer and SEO Specialist</p>
           </div>
 
           <Image

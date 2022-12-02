@@ -15,12 +15,12 @@ const PostPreview: FC<Props> = ({}) => {
           height={320}
         />
         <div className="absolute bottom-1 left-1">
-          <span className="opacity-0 group-hover:opacity-100 font-medium text-xs bg-orange-300 dark:bg-zinc-800 p-1 rounded-md group-hover:bg-opacity-80 duration-500 ease-in-out">
+          <span className="opacity-0 group-hover:opacity-100 font-medium text-xs bg-orange-200 dark:bg-zinc-800 p-1 rounded-md group-hover:bg-opacity-80 duration-500 ease-in-out">
             {3333} views
           </span>
         </div>
         <div className="absolute bottom-1 right-1">
-          <span className="opacity-0 group-hover:opacity-100 font-medium text-xs bg-orange-300 dark:bg-zinc-800 p-1 rounded-md group-hover:bg-opacity-80 duration-500 ease-in-out">
+          <span className="opacity-0 group-hover:opacity-100 font-medium text-xs bg-orange-200 dark:bg-zinc-800 p-1 rounded-md group-hover:bg-opacity-80 duration-500 ease-in-out">
             {1} min read
           </span>
         </div>
