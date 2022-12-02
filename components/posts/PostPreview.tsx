@@ -5,14 +5,14 @@ type Props = {};
 
 const PostPreview: FC<Props> = ({}) => {
   return (
-    <div className="flex flex-col w-full group">
+    <div className="flex flex-col w-full group cursor-pointer">
       <div className="relative group-hover:scale-105">
         <Image
-          className="rounded-xl w-full h-44 bg-orange-200"
+          className="rounded-xl object-fill h-48 md:h-40 bg-orange-200 border border-slate-300 dark:border-zinc-700"
           src="/images/test.jpg"
           alt="test"
-          width={330}
-          height={220}
+          width={480}
+          height={320}
         />
         <div className="absolute bottom-1 left-1">
           <span className="opacity-0 group-hover:opacity-100 font-medium text-xs bg-orange-300 dark:bg-zinc-800 p-1 rounded-md group-hover:bg-opacity-80 duration-500 ease-in-out">
