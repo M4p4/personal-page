@@ -16,7 +16,7 @@ const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const { pathname } = useRouter();
   return (
-    <header className="sticky backdrop-blur-md w-full top-0 p-2 z-10">
+    <header className="sticky backdrop-blur-md w-full top-0 py-2 px-4 z-10">
       <nav className="flex flex-row items-center gap-3 max-w-3xl mx-auto">
         <NavbarButton
           onClick={() => {
