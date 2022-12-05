@@ -7,10 +7,10 @@ import VoxelSpinner from './VoxelSpinner';
 type Props = {};
 
 const Model = () => {
-  const glb = useLoader(GLTFLoader, '/animations/test.glb');
+  const glb = useLoader(GLTFLoader, '/animations/jaro.glb');
   return (
     <>
-      <primitive object={glb.scene} scale={1.2} position={[0, -1, 0]} />
+      <primitive object={glb.scene} scale={1.5} position={[0, -1, 0]} />
     </>
   );
 };
