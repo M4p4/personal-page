@@ -31,13 +31,15 @@ const HomePage = () => {
             <p className="mt-1">Web Developer and SEO Specialist</p>
           </div>
 
-          <Image
-            className="rounded-full h-24 w-24 min-h-25 border border-slate-300 dark:border-zinc-700"
-            src="/images/me.jpg"
-            alt="Jaro Ratz"
-            width={100}
-            height={100}
-          />
+          <div className="h-24 w-24">
+            <Image
+              className="object-cover rounded-full border border-slate-300 dark:border-zinc-700 h-full"
+              src="/images/me.jpg"
+              alt="Jaro Ratz"
+              width={180}
+              height={180}
+            />
+          </div>
         </div>
 
         <div className="py-4">

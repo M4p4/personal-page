@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
-import { ArrowPathIcon } from '@heroicons/react/24/solid';
+import { Cog6ToothIcon } from '@heroicons/react/24/solid';
 import { Html } from '@react-three/drei';
 
 const VoxelSpinner = () => {
   return (
     <Html center>
-      <ArrowPathIcon className="w-12 h-12 animate-spin" />
+      <Cog6ToothIcon className="w-12 h-12 animate-spin" />
     </Html>
   );
 };

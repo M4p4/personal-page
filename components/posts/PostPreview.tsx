@@ -24,9 +24,9 @@ const PostPreview: FC<Props> = ({ mode }) => {
             <span>258,757 views</span>
           </div>
           <div className="text-left w-full font-medium text-xl">
-            {'I am a test title'}
+            I am a test title please read me
           </div>
-          <div className="text-left text-sm w-full text-zinc-800 dark:text-zinc-400">
+          <div className="text-left text-sm w-full opacity-80">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
             aspernatur minus, similique quas aliquid minima veniam ratione cum
             ea ipsa.
