@@ -4,7 +4,7 @@ import ThemeToggle from '../ui/ThemeToggle';
 import NavbarButton from './NavbarButton';
 import { XMarkIcon, Bars3Icon } from '@heroicons/react/24/solid';
 import NavbarItem from './NavbarItem';
-import { classNames } from '../../utils/helpers';
+import { classNames } from '../../lib/helpers';
 
 const navigation = [
   { name: 'Home', href: '/' },

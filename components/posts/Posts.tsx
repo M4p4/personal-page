@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { PostPreviewMode } from '../../types';
-import { classNames } from '../../utils/helpers';
+import { classNames } from '../../lib/helpers';
 import PostPreview from './PostPreview';
 
 type Props = {

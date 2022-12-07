@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { classNames } from '../../utils/helpers';
+import { classNames } from '../../lib/helpers';
 
 type Props = {
   children?: React.ReactNode;
