@@ -22,42 +22,39 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div className="px-2 md:px-10">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="flex flex-col py-2 w-full md:w-auto">
-            <h1 className="text-4xl font-bold dark:text-zinc-100">Jaro Ratz</h1>
-            <p className="mt-1">Full Stack Web Developer and SEO Specialist</p>
-          </div>
 
-          <div className="h-24 w-24">
-            <Image
-              className="object-cover rounded-full border border-slate-300 dark:border-zinc-700 h-full"
-              src="/images/me.jpg"
-              alt="Jaro Ratz"
-              width={180}
-              height={180}
-            />
-          </div>
+      <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="flex flex-col py-2 w-full md:w-auto">
+          <h1 className="text-4xl font-bold dark:text-zinc-100">Jaro Ratz</h1>
+          <p className="mt-1">Full Stack Web Developer and SEO Specialist</p>
         </div>
 
-        <div className="py-4">
-          <h2 className="text-xl font-semibold dark:text-zinc-100 py-1">
-            Work
-          </h2>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Doloremque, illo accusantium, facilis error ab molestias ratione
-            excepturi odit sapiente ex libero, inventore provident quidem minus?
-            Assumenda nemo aliquam qui excepturi.
-          </p>
+        <div className="h-24 w-24">
+          <Image
+            className="object-cover rounded-full border border-slate-300 dark:border-zinc-700 h-full"
+            src="/images/me.jpg"
+            alt="Jaro Ratz"
+            width={180}
+            height={180}
+          />
         </div>
+      </div>
 
-        <div className="py-4">
-          <h2 className="text-xl font-semibold dark:text-zinc-100 pt-1 pb-2">
-            Latest Posts
-          </h2>
-          <Posts />
-        </div>
+      <div className="py-4">
+        <h2 className="text-xl font-semibold dark:text-zinc-100 py-1">Work</h2>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque,
+          illo accusantium, facilis error ab molestias ratione excepturi odit
+          sapiente ex libero, inventore provident quidem minus? Assumenda nemo
+          aliquam qui excepturi.
+        </p>
+      </div>
+
+      <div className="py-4">
+        <h2 className="text-xl font-semibold dark:text-zinc-100 pt-1 pb-2">
+          Latest Posts
+        </h2>
+        <Posts />
       </div>
     </>
   );
