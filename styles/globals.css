@@ -27,19 +27,18 @@ code.hljs {
   padding: 3px 5px;
 }
 .hljs {
-  background: #f3f3f3;
-  color: #444;
+  color: #f3f3f3;
 }
 .hljs-comment {
   color: #697070;
 }
 .hljs-punctuation,
 .hljs-tag {
-  color: #444a;
+  color: rgba(235, 235, 235, 0.667);
 }
 .hljs-tag .hljs-attr,
 .hljs-tag .hljs-name {
-  color: #444;
+  color: rgb(205, 200, 200);
 }
 .hljs-attribute,
 .hljs-doctag,
@@ -57,11 +56,11 @@ code.hljs {
 .hljs-string,
 .hljs-template-tag,
 .hljs-type {
-  color: #800;
+  color: rgba(70, 211, 213, 0.856);
 }
 .hljs-section,
 .hljs-title {
-  color: #800;
+  color: rgba(70, 211, 213, 0.856);
   font-weight: 700;
 }
 .hljs-link,
