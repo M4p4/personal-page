@@ -1,5 +1,9 @@
+import { getAllPosts } from 'lib/MDXLoader';
+import { GetStaticProps } from 'next';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import { FC, useMemo } from 'react';
+import { Post } from 'types';
 import Posts from '../components/posts/Posts';
 import Spinner from '../components/ui/Spinner';
 
@@ -11,7 +15,16 @@ const VoxelLoader = dynamic(
   }
 );
 
-const HomePage = () => {
+type Props = {
+  posts: Post[];
+};
+
+const HomePage: FC<Props> = ({ posts }) => {
+  const latestPosts = useMemo(
+    () => (posts.length > 2 ? posts.slice(0, 2) : posts),
+    [posts]
+  );
+
   return (
     <>
       <div className="relative">
@@ -54,10 +67,25 @@ const HomePage = () => {
         <h2 className="text-xl font-semibold dark:text-zinc-100 pt-1 pb-2">
           Latest Posts
         </h2>
-        <Posts mode="compact" posts={[]} />
+        <Posts mode="compact" posts={latestPosts} />
       </div>
     </>
   );
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  let posts = getAllPosts([
+    'title',
+    'excerpt',
+    'author',
+    'coverImage',
+    'date',
+    'readTime',
+    'slug',
+  ]);
+  return {
+    props: { posts },
+  };
 };
 
 export default HomePage;
