@@ -1,0 +1,290 @@
+---
+title: 'NextJS Basics 2'
+excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus.'
+coverImage: '/images/blog/test-test/cover.jpg'
+date: '2022-12-08T05:35:07.322Z'
+readTime: '4 min'
+author:
+  name: Jaro Ratz
+  picture: '/images/me.jpg'
+ogImage:
+  url: '/images/blog/test-test/cover.jpg'
+---
+
+### Different Rendering Techniques
+
+- Static Site Generation (SSG) -> (Prodcuts, Blogposts etc.)
+- Server side Rendering (SSR) -> (Dynamic Newsfeed, Netflix etc.)
+- Incremental Site Regeneration (ISR) -> static + server (combo of both)
+
+### Performance
+
+- Code Splitting
+- Minifying Files
+- Image Optimization
+- Pre-fetchting Assets
+
+### \_app.js file
+
+The **\_app.js** is the entry point of your Nextjs Application. This file is good to wrap it with a layout component (Footer, Header, Navbar etc.)
+
+### Head Component
+
+The **Head** component is used to add title, meta tags and description to each page.
+
+```tsx
+//import
+import Head from 'next/head';
+
+//modify head tag in page...
+<Head>
+  <title>Page Title</title>
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+</Head>;
+```
+
+### Router Component
+
+The **Router** component can help us to get path and query informations of an page.
+
+```tsx
+//import
+import { useRouter } from 'next/router';
+
+// coffee-store/[cid].tsx <-- dynamic page id (cid)
+// ------------------------------------------------
+// using useRouter Hook
+const router = useRouter();
+
+// getting the cid query with router
+const { cid } = router.query;
+
+// checking if page is fallback (getStaticProps / Paths)
+if (router.isFallback) {
+  return <p>loading...</p>;
+}
+```
+
+### Link Component
+
+The **Link** Component is used to link our pages and for navigation between them without reloading the page in most cases.
+
+```tsx
+//import
+import Link from 'next/link';
+
+//basic link
+<Link href={'/'}>Back to Homepage</Link>
+
+//basic link for component, don't forget the <a> & </a> the href will be passed!
+<Link href={'/'}>
+	<a>
+		<ExampleComponent text="lulz i am the link text" />
+	</a>
+</Link>
+```
+
+### Image Component
+
+The Image Component is used to optimize the usage of images (best sizes for each devicesize)
+
+```tsx
+//import
+import Image from 'next/image';
+
+//render png - need alt, width, height or fill parameter
+<Image src="/static/hero-image.png" alt="" width={700} height={400} />;
+```
+
+### Custom Document
+
+use the \_document.tsx file to modify the Html body. Example setting lang in Html tag.
+
+```tsx
+import Document, { Head, Html, Main, NextScript } from 'next/document';
+
+class MyDocument extends Document {
+  render() {
+    return (
+      <Html lang="en">
+        <Head></Head>
+        <body>
+          <Main></Main>
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
+}
+
+export default MyDocument;
+```
+
+### getServersideProps
+
+[Docs](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props)
+
+- Runs on server on every request by user
+- Meant for all routes
+
+```tsx
+export const getServerSideProps: GetServerSideProps = async () => {
+  // Fetch data from external API
+  const res = await fetch(`https://.../data`);
+  const data = await res.json();
+
+  // Pass data to the page via props
+  return { props: { data } };
+};
+```
+
+### getStaticProps
+
+[Docs](https://nextjs.org/docs/basic-features/data-fetching/get-static-props)
+
+- Can only exported from a page file
+- Meant for all routes
+
+```tsx
+export const getStaticProps: GetStaticProps = async (ctx) => {
+  // id doesnt exists we redirect to root or 404 page
+  if (!id) {
+    return {
+      redirect: {
+        destination: '/',
+      },
+    };
+  }
+
+  return {
+    props: { id }, // will be passed to the page component as props
+    revalidate: 10, // seconds for ISR
+  };
+};
+```
+
+**Parameter**
+
+- `props` --> we can use the props later in our page component
+- `revalidate` --> sets the timeout when page will be rerenderd on server
+- `redirect` --> redirect to a `destination`
+
+### getStaticPaths
+
+[Docs](https://nextjs.org/docs/basic-features/data-fetching/get-static-paths)
+
+- Can only exported from a page file
+- Meant for all routes
+- Needed when there is a Dynamic param in the url!
+
+```tsx
+// pages/posts/[id].js
+
+// Generates `/posts/1` and `/posts/2`
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [{ params: { id: '1' } }, { params: { id: '2' } }],
+    fallback: false, // can also be true or 'blocking'
+  };
+};
+
+// `getStaticPaths` requires using `getStaticProps`
+export const getStaticProps: GetStaticProps = async (ctx) => {
+  return {
+    // Passed to the page component as props
+    props: { post: {} },
+  };
+};
+
+export default function Post({ post }) {
+  // Render post...
+}
+```
+
+**paths**
+
+- `{ params : { identifier : '1'}}` --> params of page that we want to make statics
+
+**fallback**
+
+- `false` --> all pages that not in paths array give 404
+- `true` --> page that is not in paths array will be returned and getStaticProps is called. There is a delay now because getStaticProps is async.
+- `'blocking'` --> solves the delay problem and waits till the props from getStaticProps are ready. Page is blocked for user while data is ready.
+
+### .env.local
+
+All key value pairs stored in this file are accessable by server only. To make them public you have to use `NEXT_PUBLIC_` in the key.
+
+**Example:**
+
+```shell
+FOURSQUARE_API_KEY=keyexample <-- only in code base!
+
+NEXT_PUBLIC_UNSPLASH_ACCESS_KEY=keyexample <-- also exported to client!
+```
+
+### API Routing
+
+Nextjs gives us the possibility to build serverless functions / API's.
+
+```js
+export default function handler(req, res) {
+  res.status(200).json({ name: 'John Doe' });
+}
+```
+
+### SWR - State While Revalidate
+
+SWR helps us to **ensure that our data** on the page is **up-to-date** (voting etc).
+
+We define a **fetcher** function:
+
+```ts
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
+```
+
+And then we use the **useSWR** hook from `swr`.
+
+```tsx
+import useSWR from 'swr';
+
+function Profile() {
+  const { data, error } = useSWR('/api/user/123', fetcher);
+
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
+
+  // render data
+  return <div>hello {data.name}!</div>;
+}
+```
+
+### Middleware
+
+[Docs](https://nextjs.org/docs/advanced-features/middleware)
+Place the **middleware.js** file into the root folder. Middleware is good for code like:
+
+- Redirects
+- Authorization
+- Token validation
+- Location based navigation
+
+### Auth
+
+`next-auth package`
+
+- Client Side Page Guards - getSession / window.location.href (dity)
+- Server Side Page Guards - getSession in getServerSideProps (elegant way)
+
+**Note:** `redirect: { destination: ‘/target’, permanent: false }`
+
+### Auth in API
+
+```js
+const session = await getSession({ req: req });
+
+if (!session) {
+  res.status(401).json({ message: 'auth failed!' });
+}
+```

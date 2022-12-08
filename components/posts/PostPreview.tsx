@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { FC } from 'react';
+import React, { FC, useMemo } from 'react';
 import { Post, PostPreviewMode } from '../../types';
 
 type Props = {
@@ -9,6 +9,9 @@ type Props = {
 };
 
 const PostPreview: FC<Props> = ({ post, mode }) => {
+  const { date } = post;
+  const postDate = useMemo(() => new Date(date).toLocaleDateString(), [date]);
+
   if (mode === 'full') {
     return (
       <Link className="group" href={`/blog/${post.slug}`}>
@@ -22,7 +25,7 @@ const PostPreview: FC<Props> = ({ post, mode }) => {
           />
           <div className="flex flex-col justify-start items-center gap-2 py-2">
             <div className="text-left w-full font-normal text-sm inline-flex justify-start items-center gap-2 text-orange-800 dark:text-orange-400">
-              <span>{post.date}</span> •<span>{post.readTime} read</span>
+              <span>{postDate}</span> •<span>{post.readTime} read</span>
             </div>
             <div className="text-left w-full font-medium text-xl">
               {post.title}
@@ -47,12 +50,12 @@ const PostPreview: FC<Props> = ({ post, mode }) => {
           />
           <div className="absolute bottom-1 right-1">
             <span className="opacity-0 group-hover:opacity-100 font-medium text-xs bg-orange-200 dark:bg-zinc-800 p-1 rounded-md group-hover:bg-opacity-80 duration-500 ease-in-out">
-              {1} min read
+              {post.readTime} read
             </span>
           </div>
         </div>
 
-        <div className="text-center pt-3 pb-1">{'I am a test title'}</div>
+        <div className="text-center pt-3 pb-1">{post.title}</div>
       </div>
     );
   }
