@@ -14,7 +14,7 @@ type Props = {
 const BlogPostPage: FC<Props> = ({ post, source }) => {
   return (
     <article className="prose dark:prose-invert">
-      <h1 className="text-4xl font-bold">{post.title}</h1>
+      <h1 className="text-4xl font-bold dark:text-zinc-100">{post.title}</h1>
       <MDXRemote {...source} components={{}} />
     </article>
   );

@@ -1,13 +1,22 @@
 import React, { FC } from 'react';
-import { PostPreviewMode } from '../../types';
+import { Post, PostPreviewMode } from '../../types';
 import { classNames } from '../../lib/helpers';
 import PostPreview from './PostPreview';
 
 type Props = {
   mode?: PostPreviewMode;
+  posts: Post[];
 };
 
-const Posts: FC<Props> = ({ mode = 'full' }) => {
+const Posts: FC<Props> = ({ posts, mode = 'full' }) => {
+  if (posts.length === 0) {
+    return (
+      <div className="text-center py-5 mx-auto font-medium bg-orange-200/30 dark:bg-zinc-700/30 rounded-md">
+        There are no posts yet!
+      </div>
+    );
+  }
+
   return (
     <div
       className={classNames(
@@ -15,8 +24,9 @@ const Posts: FC<Props> = ({ mode = 'full' }) => {
         mode === 'compact' ? 'md:grid-cols-2' : ''
       )}
     >
-      <PostPreview mode={mode} />
-      <PostPreview mode={mode} />
+      {posts.map((post) => (
+        <PostPreview key={post.title} mode={mode} post={post} />
+      ))}
     </div>
   );
 };

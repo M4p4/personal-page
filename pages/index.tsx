@@ -54,7 +54,7 @@ const HomePage = () => {
         <h2 className="text-xl font-semibold dark:text-zinc-100 pt-1 pb-2">
           Latest Posts
         </h2>
-        <Posts />
+        <Posts mode="compact" posts={[]} />
       </div>
     </>
   );
