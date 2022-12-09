@@ -1,3 +1,4 @@
+import Project from 'components/project';
 import ImageSlider from 'components/ui/ImageSlider';
 import { getAllPosts } from 'lib/MDXLoader';
 import { GetStaticProps } from 'next';
@@ -68,12 +69,31 @@ const HomePage: FC<Props> = ({ posts }) => {
         <h2 className="text-xl font-semibold dark:text-zinc-100 py-1">
           Projects
         </h2>
-        <ImageSlider
-          title="lol i am a test"
+        <Project
+          title="Project #1"
+          date="2022"
+          description={
+            'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident recusandae assumenda perspiciatis, totam voluptatem pariatur, iusto suscipit minus aliquam, officia ratione! Ratione, ad magnam! Sit in porro ratione molestias quidem!'
+          }
           images={[
             'https://images.unsplash.com/photo-1487014679447-9f8336841d58?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2205&q=80',
             'https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
           ]}
+          tags={['nextjs', 'react', 'tailwindcss']}
+        />
+        <Project
+          title="Project #2"
+          description={
+            'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident recusandae assumenda perspiciatis, totam voluptatem pariatur, iusto suscipit minus aliquam, officia ratione! Ratione, ad magnam! Sit in porro ratione molestias quidem!'
+          }
+          date="2021-2022"
+          images={[
+            'https://images.unsplash.com/photo-1496347646636-ea47f7d6b37b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
+            'https://images.unsplash.com/photo-1487014679447-9f8336841d58?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2205&q=80',
+            'https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
+          ]}
+          right
+          tags={['nextjs', 'react', 'tailwindcss']}
         />
       </div>
 
