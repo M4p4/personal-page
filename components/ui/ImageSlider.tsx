@@ -43,6 +43,7 @@ const ImageSlider: FC<Props> = ({ title, images, timeout = 15 }) => {
       </div>
       <img
         src={images[currentImage]}
+        alt={`${title} - Picture ${currentImage + 1}`}
         className="rounded-b-md w-full object-cover h-96"
       />
     </div>
