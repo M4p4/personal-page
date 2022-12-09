@@ -1,3 +1,4 @@
+import ImageSlider from 'components/ui/ImageSlider';
 import { getAllPosts } from 'lib/MDXLoader';
 import { GetStaticProps } from 'next';
 import dynamic from 'next/dynamic';
@@ -61,6 +62,19 @@ const HomePage: FC<Props> = ({ posts }) => {
           sapiente ex libero, inventore provident quidem minus? Assumenda nemo
           aliquam qui excepturi.
         </p>
+      </div>
+
+      <div className="py-4">
+        <h2 className="text-xl font-semibold dark:text-zinc-100 py-1">
+          Projects
+        </h2>
+        <ImageSlider
+          title="lol i am a test"
+          images={[
+            'https://images.unsplash.com/photo-1487014679447-9f8336841d58?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2205&q=80',
+            'https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
+          ]}
+        />
       </div>
 
       <div className="py-4">
