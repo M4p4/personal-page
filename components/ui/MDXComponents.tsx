@@ -14,7 +14,7 @@ const MDXComponents = {
     />
   ),
   a: (props: any) => (
-    <Link href={props.href} className="text-orange-600">
+    <Link href={props.href} className="dark:text-teal-500 text-teal-700">
       {props.children}
     </Link>
   ),

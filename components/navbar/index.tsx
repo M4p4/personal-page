@@ -5,11 +5,20 @@ import NavbarButton from './NavbarButton';
 import { XMarkIcon, Bars3Icon } from '@heroicons/react/24/solid';
 import NavbarItem from './NavbarItem';
 import { classNames } from '../../lib/helpers';
+import GithubIcon from 'components/icons/GithubIcon';
 
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'Projects', href: '/projects' },
   { name: 'Blog', href: '/blog' },
+  {
+    name: (
+      <div className="inline-flex justify-center items-center gap-1">
+        <GithubIcon className="w-5 h-5" /> Github
+      </div>
+    ),
+    href: 'https://github.com/m4p4',
+  },
 ];
 
 const Navbar = () => {
@@ -35,7 +44,7 @@ const Navbar = () => {
         </NavbarButton>
         {navigation.map((item) => (
           <NavbarItem
-            key={item.name}
+            key={item.href}
             text={item.name}
             href={item.href}
             isActive={pathname === item.href}
@@ -54,7 +63,7 @@ const Navbar = () => {
         >
           {navigation.map((item) => (
             <NavbarItem
-              key={item.name}
+              key={item.href}
               text={item.name}
               href={item.href}
               isActive={pathname === item.href}
