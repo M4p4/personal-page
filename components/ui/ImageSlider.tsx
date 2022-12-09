@@ -23,7 +23,7 @@ const ImageSlider: FC<Props> = ({ title, images, timeout = 15 }) => {
         <div className="bg-red-500 rounded-full w-2 h-2"></div>
         <div className="bg-yellow-500 rounded-full w-2 h-2"></div>
         <div className="bg-green-500 rounded-full w-2 h-2"></div>
-        <div className="absolute w-full flex-1 text-center text-sm text-zinc-100 dark:text-zinc-800">
+        <div className="absolute w-full flex-1 text-center font-semibold text-sm text-zinc-100 dark:text-zinc-800">
           {title}
         </div>
         <div className="absolute w-full bottom-5 flex flex-row justify-center items-center gap-3">
