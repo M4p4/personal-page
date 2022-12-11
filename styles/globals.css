@@ -5,6 +5,7 @@
 body {
   @apply font-inter bg-orange-50 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-300;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   overflow-wrap: break-word;
 }

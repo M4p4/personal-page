@@ -41,7 +41,7 @@ const PostPreview: FC<Props> = ({ post, mode }) => {
     return (
       <Link className="group" href={`/blog/${post.slug}`}>
         <div className="flex flex-col w-full group cursor-pointer">
-          <div className="relative group-hover:scale-105">
+          <div className="relative">
             <Image
               className="rounded-xl object-cover w-full h-48 bg-orange-200 border border-slate-300 dark:border-zinc-700"
               src="/images/test.jpg"

@@ -34,8 +34,8 @@ const ImageSlider: FC<Props> = ({ title, images, timeout = 15 }) => {
                 setCurrentImage(i);
               }}
               className={classNames(
-                i === currentImage ? 'p-3' : 'p-2',
-                'bg-zinc-200 rounded-full w-5 h-5 border-2 border-zinc-300 hover:bg-zinc-100 opacity-70'
+                i === currentImage ? 'bg-zinc-50 ' : 'bg-zinc-200 ',
+                'p-2 rounded-full w-5 h-5 border border-zinc-50 opacity-90'
               )}
             ></div>
           ))}

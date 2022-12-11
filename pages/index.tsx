@@ -68,7 +68,7 @@ const HomePage: FC<Props> = ({ posts }) => {
 
       <div className="py-4">
         <h2 className="text-2xl font-semibold dark:text-zinc-100 py-1">
-          Projects
+          Latest Projects
         </h2>
         <Project
           title="Project #1"
