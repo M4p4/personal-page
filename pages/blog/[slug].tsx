@@ -14,8 +14,8 @@ type Props = {
 
 const BlogPostPage: FC<Props> = ({ post, source }) => {
   return (
-    <article className="prose justify-between dark:prose-invert">
-      <h1 className="text-4xl font-semibold dark:text-zinc-100 mb-0">
+    <article className="prose justify-between dark:prose-invert mt-4">
+      <h1 className="text-3xl md:text-4xl font-bold tracking-tight dark:text-zinc-100 mb-0">
         {post.title}
       </h1>
 

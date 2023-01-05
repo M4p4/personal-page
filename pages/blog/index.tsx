@@ -11,7 +11,7 @@ type Props = {
 const BlogPage: FC<Props> = ({ posts }) => {
   return (
     <>
-      <h1 className="text-3xl md:text-4xl font-semibold dark:text-zinc-100">
+      <h1 className="text-3xl md:text-4xl font-bold tracking-tight dark:text-zinc-100 mt-4 mb-4 md:mb-0">
         All Posts
       </h1>
       <Posts posts={posts} />
