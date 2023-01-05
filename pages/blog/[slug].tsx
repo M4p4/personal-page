@@ -13,7 +13,7 @@ type Props = {
 
 const BlogPostPage: FC<Props> = ({ post, source }) => {
   return (
-    <article className="prose dark:prose-invert">
+    <article className="prose justify-between dark:prose-invert">
       <h1 className="text-3xl md:text-4xl font-semibold dark:text-zinc-100">
         {post.title}
       </h1>

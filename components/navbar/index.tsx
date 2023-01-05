@@ -25,7 +25,7 @@ const Navbar = () => {
   const { pathname } = useRouter();
   return (
     <header className="sticky backdrop-blur-md w-full top-0 py-2 px-3 z-10">
-      <nav className="flex flex-row items-center gap-3 max-w-3xl mx-auto px-0 md:px-3">
+      <nav className="flex flex-row items-center gap-3 max-w-2xl mx-auto px-0 md:px-3">
         <NavbarButton
           onClick={() => {
             if (!showMenu) {

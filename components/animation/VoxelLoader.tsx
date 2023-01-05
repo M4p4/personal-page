@@ -29,7 +29,7 @@ const VoxelLoader = (props: Props) => {
         />
         <Suspense fallback={<VoxelSpinner />}>
           <Model />
-          <Environment preset="studio" />
+          <Environment preset="sunset" />
         </Suspense>
         <OrbitControls autoRotate />
       </Canvas>
