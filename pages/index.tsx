@@ -8,6 +8,7 @@ import { Post } from 'types';
 import Posts from '../components/posts/Posts';
 import Spinner from '../components/ui/Spinner';
 import projects from '../_data/projects.json';
+import NextHeadSeo from 'next-head-seo';
 
 const VoxelLoader = dynamic(
   () => import('../components/animation/VoxelLoader'),
@@ -29,11 +30,17 @@ const HomePage: FC<Props> = ({ posts }) => {
 
   return (
     <>
+      <NextHeadSeo
+        title={'Jaro Ratz - Web Developer & SEO Specialist'}
+        description={
+          'I am Jaro Ratz, a web developer and SEO specialist with a passion for delivering results.'
+        }
+      />
       <div className="relative">
         <VoxelLoader />
         <div className="px-2 w-full absolute bottom-1 left-0 right-0 md:px-10">
-          <div className="bg-orange-200/30 dark:bg-zinc-700/30 text-center w-full p-5 rounded-md my-3">
-            I am currently working from 🇵🇭 but I will be back soon in 🇩🇪
+          <div className="bg-orange-200/30 dark:bg-zinc-700/30 text-center w-full p-3 rounded-md my-3">
+            I am currently working from 🇵🇭 and soon visiting 🇩🇪
           </div>
         </div>
       </div>
@@ -59,10 +66,11 @@ const HomePage: FC<Props> = ({ posts }) => {
         Work experience
       </h2>
       <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque,
-        illo accusantium, facilis error ab molestias ratione excepturi odit
-        sapiente ex libero, inventore provident quidem minus? Assumenda nemo
-        aliquam qui excepturi.
+        With 7 years of experience in web development and SEO, I am a skilled
+        specialist with a passion for building beautiful, high-performing
+        websites. My focus is on delivering results and helping businesses
+        succeed online, and I specialize in using latest frameworks like Flask
+        or NextJS to create dynamic and effective online solutions.
       </p>
 
       <h2 className="text-2xl font-semibold dark:text-zinc-100 py-4">

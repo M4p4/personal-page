@@ -6,6 +6,7 @@ import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote';
 import rehypeHighlight from 'rehype-highlight';
 import Moment from 'moment';
+import NextHeadSeo from 'next-head-seo';
 
 type Props = {
   post: Post;
@@ -14,24 +15,26 @@ type Props = {
 
 const BlogPostPage: FC<Props> = ({ post, source }) => {
   return (
-    <article className="prose justify-between dark:prose-invert mt-4">
-      <h1 className="text-3xl md:text-4xl font-bold tracking-tight dark:text-zinc-100 mb-0">
-        {post.title}
-      </h1>
-
-      <div className="flex justify-start space-x-2 items-center mt-2">
-        <img
-          src={post.author.image}
-          alt={post.author.name}
-          className="w-6 h-6 rounded-full m-0"
-        />
-        <div className="text-sm">
-          {post.author.name} / {Moment(post.date).format('d MMM YYYY')} /{' '}
-          {post.readTime} read
+    <>
+      <NextHeadSeo title={`${post.title}`} description={`${post.excerpt}`} />
+      <article className="prose justify-between dark:prose-invert mt-4">
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight dark:text-zinc-100 mb-0">
+          {post.title}
+        </h1>
+        <div className="flex justify-start space-x-2 items-center mt-2">
+          <img
+            src={post.author.image}
+            alt={post.author.name}
+            className="w-6 h-6 rounded-full m-0"
+          />
+          <div className="text-sm">
+            {post.author.name} / {Moment(post.date).format('d MMM YYYY')} /{' '}
+            {post.readTime} read
+          </div>
         </div>
-      </div>
-      <MDXRemote {...source} components={{}} />
-    </article>
+        <MDXRemote {...source} components={{}} />
+      </article>
+    </>
   );
 };
 
@@ -57,6 +60,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     'author',
     'readTime',
     'date',
+    'excerpt',
   ]);
   const mdxSource = await serialize(post.content, {
     mdxOptions: { rehypePlugins: [rehypeHighlight] },
