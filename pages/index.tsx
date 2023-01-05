@@ -7,6 +7,7 @@ import { FC, useMemo } from 'react';
 import { Post } from 'types';
 import Posts from '../components/posts/Posts';
 import Spinner from '../components/ui/Spinner';
+import projects from '../_data/projects.json';
 
 const VoxelLoader = dynamic(
   () => import('../components/animation/VoxelLoader'),
@@ -54,56 +55,32 @@ const HomePage: FC<Props> = ({ posts }) => {
         </div>
       </div>
 
-      <div className="py-4">
-        <h2 className="text-2xl font-semibold dark:text-zinc-100 py-1">
-          Work experience
-        </h2>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque,
-          illo accusantium, facilis error ab molestias ratione excepturi odit
-          sapiente ex libero, inventore provident quidem minus? Assumenda nemo
-          aliquam qui excepturi.
-        </p>
-      </div>
+      <h2 className="text-2xl font-semibold dark:text-zinc-100 py-4">
+        Work experience
+      </h2>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque,
+        illo accusantium, facilis error ab molestias ratione excepturi odit
+        sapiente ex libero, inventore provident quidem minus? Assumenda nemo
+        aliquam qui excepturi.
+      </p>
 
-      <div className="py-4">
-        <h2 className="text-2xl font-semibold dark:text-zinc-100 py-1">
-          Latest Projects
-        </h2>
-        <Project
-          title="Project #1"
-          date="2022"
-          description={
-            'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident recusandae assumenda perspiciatis, totam voluptatem pariatur, iusto suscipit minus aliquam, officia ratione! Ratione, ad magnam! Sit in porro ratione molestias quidem!'
-          }
-          right
-          images={[
-            'https://images.unsplash.com/photo-1487014679447-9f8336841d58?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2205&q=80',
-            'https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-          ]}
-          tags={['nextjs', 'react', 'tailwindcss']}
-        />
-        <Project
-          title="Project #2"
-          description={
-            'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident recusandae assumenda perspiciatis, totam voluptatem pariatur, iusto suscipit minus aliquam, officia ratione! Ratione, ad magnam! Sit in porro ratione molestias quidem!'
-          }
-          date="2021-2022"
-          images={[
-            'https://images.unsplash.com/photo-1496347646636-ea47f7d6b37b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-            'https://images.unsplash.com/photo-1487014679447-9f8336841d58?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2205&q=80',
-            'https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-          ]}
-          tags={['nextjs', 'react', 'tailwindcss']}
-        />
-      </div>
+      <h2 className="text-2xl font-semibold dark:text-zinc-100 py-4">
+        Latest Projects
+      </h2>
 
-      <div className="py-4">
-        <h2 className="text-2xl font-semibold dark:text-zinc-100 py-1">
-          Latest Posts
-        </h2>
-        <Posts mode="compact" posts={latestPosts} />
-      </div>
+      {projects.map((project) => (
+        <Project
+          key={project.title}
+          project={project}
+          image_right={project.image_right || false}
+        />
+      ))}
+
+      <h2 className="text-2xl font-semibold dark:text-zinc-100 py-4">
+        Latest Posts
+      </h2>
+      <Posts mode="compact" posts={latestPosts} />
     </>
   );
 };

@@ -1,29 +1,20 @@
 import ImageSlider from 'components/ui/ImageSlider';
 import { classNames } from 'lib/helpers';
 import React, { FC } from 'react';
+import { Project } from 'types';
 import Tag from './Tag';
 
 type Props = {
-  right?: boolean;
-  images: string[];
-  title: string;
-  date: string;
-  tags: string[];
-  description: string;
+  image_right?: boolean;
+  project: Project;
 };
 
-const Project: FC<Props> = ({
-  right = false,
-  images,
-  title,
-  date,
-  tags,
-  description,
-}) => {
-  const order = right ? 'md:flex-row' : 'md:flex-row-reverse';
+const Project: FC<Props> = ({ project, image_right = false }) => {
+  const order = image_right ? 'md:flex-row-reverse' : 'md:flex-row';
+  const { images, title, date, tags, description } = project;
 
   return (
-    <div className={classNames(order, 'flex flex-col justify-between py-3')}>
+    <div className={classNames(order, 'flex flex-col justify-between')}>
       <div className="flex w-full md:w-2/3 max-h-96">
         <ImageSlider images={images} />
       </div>
