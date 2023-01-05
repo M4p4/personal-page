@@ -1,7 +1,7 @@
 export type PostPreviewMode = 'compact' | 'full';
 
 export type Post = {
-  [key: string]: string;
+  [key: string]: any;
 };
 
 export type Project = {

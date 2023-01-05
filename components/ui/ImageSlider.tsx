@@ -41,13 +41,13 @@ const ImageSlider: FC<Props> = ({ title, images, timeout = 15 }) => {
           <>
             <div className="absolute left-0 top-[50%]">
               <ChevronLeftIcon
-                className="w-10 h-10 hover:fill-white cursor-pointer"
+                className="w-10 h-10 hover:fill-white cursor-pointer fill-zinc-100"
                 onClick={handleChangeImage.bind(null, false)}
               />
             </div>
             <div className="absolute right-0 top-[50%]">
               <ChevronRightIcon
-                className="w-10 h-10 hover:fill-white cursor-pointer"
+                className="w-10 h-10 hover:fill-white cursor-pointer fill-zinc-100"
                 onClick={handleChangeImage.bind(null, true)}
               />
             </div>

@@ -38,7 +38,7 @@ const HomePage: FC<Props> = ({ posts }) => {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-between items-center">
+      <div className="flex flex-col md:flex-row justify-between items-center mt-4">
         <div className="flex flex-col py-2 w-full md:w-auto">
           <h1 className="text-4xl font-bold dark:text-zinc-100">Jaro Ratz</h1>
           <p className="mt-1">Full Stack Web Developer and SEO Specialist</p>
