@@ -4,18 +4,12 @@ import { OrbitControls } from '@react-three/drei';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import VoxelSpinner from './VoxelSpinner';
 
-type Props = {};
-
 const Model = () => {
   const glb = useLoader(GLTFLoader, '/animations/jaro.glb');
-  return (
-    <>
-      <primitive object={glb.scene} scale={1.4} position={[0, -1, 0]} />
-    </>
-  );
+  return <primitive object={glb.scene} scale={1.4} position={[0, -1, 0]} />;
 };
 
-const VoxelLoader = (props: Props) => {
+const VoxelLoader = () => {
   return (
     <div className="w-full h-96">
       <Canvas shadows dpr={[1, 2]} camera={{ position: [4, 4, 5] }}>
