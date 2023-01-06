@@ -18,7 +18,7 @@ const Project: FC<Props> = ({ project, image_right = false }) => {
       <div className="flex w-full md:w-2/3">
         <ImageSlider images={images} />
       </div>
-      <div className="w-full md:w-1/3 text-left md:text-center gap-3 py-10 md:py-0 px-0 md:pl-2 flex flex-col justify-between items-center">
+      <div className="w-full md:w-1/3 text-left md:text-center gap-3 pt-3 md:pt-0 px-0 md:pl-2 flex flex-col justify-between items-center">
         <h3 className="text-xl w-full font-semibold dark:text-zinc-100 uppercase">
           {title}
         </h3>
