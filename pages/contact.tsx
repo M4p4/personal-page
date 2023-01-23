@@ -9,7 +9,7 @@ const Contact = (props: Props) => {
   return (
     <>
       <NextHeadSeo
-        title={'Jaro Ratz - Contact me'}
+        title={'Jaro Ratz - Contact Me'}
         robots="noindex, nofollow"
       />
       <Headline title="Contact Me" />
