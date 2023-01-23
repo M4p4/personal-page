@@ -2,7 +2,7 @@
   {
     "title": "Next Tube",
     "tags": ["# typescript", "# tailwind", "# nextjs"],
-    "description": "This project can be used as a adult-tube or a normal tube website like youtube.com, it comes with a comprehensive search and recommendation engine and can scale easily. Has an adminpanel and code for a image cdn which allows to modify images.",
+    "description": "This project can be used as a adult-tube or a normal tube website like youtube.com, it comes with a comprehensive search and recommendation engine and can scale easily.",
     "images": [
       "/images/wheels/1.png",
       "/images/wheels/2.png",

@@ -15,7 +15,7 @@ const Project: FC<Props> = ({ project, image_right = false }) => {
 
   return (
     <div className={classNames(order, 'flex flex-col justify-between')}>
-      <div className="flex w-full md:w-2/3">
+      <div className="flex w-full md:w-2/3 overflow-hidden mb-auto justify-start">
         <ImageSlider images={images} />
       </div>
       <div className="w-full md:w-1/3 text-left md:text-center gap-3 pt-3 md:pt-0 px-0 md:pl-2 flex flex-col justify-between items-center">
@@ -26,7 +26,7 @@ const Project: FC<Props> = ({ project, image_right = false }) => {
           {date}
         </div>
         <p>{description}</p>
-        <div className="w-full md:w-auto font-semibold uppercase dark:text-gray-500">
+        <div className="w-full md:w-auto font-semibold uppercase dark:text-gray-500 md:hidden">
           Technology Stack
         </div>
         <div className="w-full md:w-auto flex flex-row flex-wrap items-baseline justify-start md:justify-center gap-3 text-zinc-100">
