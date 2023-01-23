@@ -4,6 +4,7 @@ import { GetStaticProps } from 'next';
 import { FC } from 'react';
 import { Post } from 'types';
 import NextHeadSeo from 'next-head-seo';
+import Headline from 'components/ui/Headline';
 
 type Props = {
   posts: Post[];
@@ -27,9 +28,7 @@ const BlogPage: FC<Props> = ({ posts }) => {
         fields and learn how to improve your own skills and website&#39;s
         visibility.
       </p>
-      <h2 className="text-2xl font-semibold dark:text-zinc-100 py-4">
-        Latest Posts
-      </h2>
+      <Headline title="Latest Posts" />
       <Posts posts={posts} />
     </>
   );
