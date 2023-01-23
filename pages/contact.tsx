@@ -12,7 +12,7 @@ const Contact = (props: Props) => {
         title={'Jaro Ratz - Contact me'}
         robots="noindex, nofollow"
       />
-      <Headline title="Contract Me" />
+      <Headline title="Contact Me" />
       <ContactForm />
     </>
   );
