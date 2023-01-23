@@ -1,6 +1,7 @@
 import { classNames } from 'lib/helpers';
 import React, { FC, useEffect, useState } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
+import Image from 'next/image';
 
 type Props = {
   images: string[];
@@ -68,10 +69,12 @@ const ImageSlider: FC<Props> = ({ title, images, timeout = 15 }) => {
           </>
         )}
       </div>
-      <img
+      <Image
         src={images[currentImage]}
         alt={`${title} - Picture ${currentImage + 1}`}
         className="rounded-b-md w-full object-fill h-96"
+        width={1024}
+        height={1024}
       />
     </div>
   );
