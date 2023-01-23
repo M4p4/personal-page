@@ -7,12 +7,12 @@ My personal homepage is built using NextJS and TypeScript, it features a clean a
 - md / mdx format blog
 - project showcase with custom imageslider
 - dark / light theme
-- Selfmade Voxel 3d Animation as Hero Section
-- SEO Pages
+- selfmade voxel 3d animation as herosection
+- SEO pages
 
 ### Todos?
 
-- Contact me form / subpage
+- contact me form / subpage
 
 ### How to run?
 
