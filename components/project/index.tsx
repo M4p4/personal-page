@@ -29,7 +29,7 @@ const Project: FC<Props> = ({ project, image_right = false }) => {
         <div className="w-full md:w-auto font-semibold uppercase dark:text-gray-500">
           Technology Stack
         </div>
-        <div className="w-full md:w-auto flex flex-row flex-wrap items-baseline justify-start gap-3 text-zinc-100">
+        <div className="w-full md:w-auto flex flex-row flex-wrap items-baseline justify-start md:justify-center gap-3 text-zinc-100">
           {tags.map((tag) => (
             <Tag key={tag} title={tag} />
           ))}

@@ -29,7 +29,7 @@ const ImageSlider: FC<Props> = ({ title, images, timeout = 15 }) => {
   };
 
   return (
-    <div className="rounded-md bg-zinc-800 dark:bg-slate-100 relative">
+    <div className="rounded-md bg-zinc-800 relative">
       <div className="flex flex-row items-center justify-start gap-2 px-2 h-7">
         <div className="bg-red-500 rounded-full w-2 h-2"></div>
         <div className="bg-yellow-500 rounded-full w-2 h-2"></div>
@@ -71,7 +71,7 @@ const ImageSlider: FC<Props> = ({ title, images, timeout = 15 }) => {
       <img
         src={images[currentImage]}
         alt={`${title} - Picture ${currentImage + 1}`}
-        className="rounded-b-md w-full object-cover h-96"
+        className="rounded-b-md w-full object-fill h-96"
       />
     </div>
   );
