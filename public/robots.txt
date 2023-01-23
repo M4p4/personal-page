@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https:/jaroratz.dev
+Host: https:/jaroratz.com
 
 # Sitemaps
-Sitemap: https:/jaroratz.dev/sitemap.xml
+Sitemap: https:/jaroratz.com/sitemap.xml

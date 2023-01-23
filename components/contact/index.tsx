@@ -45,7 +45,7 @@ const ContactForm = (props: Props) => {
     setShowMessage(true);
     setForm(initFormState);
     router.push(
-      `mailto:admin@jaroratz.com?subject=${
+      `mailto:${process.env.CONTACT_MAIL}?subject=${
         encodeURIComponent(form.subject) || ''
       }&body=${encodeURIComponent(form.message) || ''}`
     );
