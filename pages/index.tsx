@@ -9,6 +9,7 @@ import Posts from '../components/posts/Posts';
 import Spinner from '../components/ui/Spinner';
 import projects from '../_data/projects.json';
 import NextHeadSeo from 'next-head-seo';
+import Headline from 'components/ui/Headline';
 
 const VoxelLoader = dynamic(
   () => import('../components/animation/VoxelLoader'),
@@ -62,9 +63,7 @@ const HomePage: FC<Props> = ({ posts }) => {
         </div>
       </div>
 
-      <h2 className="text-2xl font-semibold dark:text-zinc-100 py-4">
-        Work experience
-      </h2>
+      <Headline title="Work Experience" />
       <p>
         With 7 years of experience in web development and SEO, I am a skilled
         specialist with a passion for building beautiful, high-performing
@@ -73,10 +72,7 @@ const HomePage: FC<Props> = ({ posts }) => {
         or NextJS to create dynamic and effective online solutions.
       </p>
 
-      <h2 className="text-2xl font-semibold dark:text-zinc-100 py-4">
-        Latest Projects
-      </h2>
-
+      <Headline title="Latest Projects" />
       {projects.map((project) => (
         <Project
           key={project.title}
@@ -85,9 +81,7 @@ const HomePage: FC<Props> = ({ posts }) => {
         />
       ))}
 
-      <h2 className="text-2xl font-semibold dark:text-zinc-100 py-4">
-        Latest Posts
-      </h2>
+      <Headline title="Latest Posts" />
       <Posts mode="compact" posts={latestPosts} />
     </>
   );

@@ -19,7 +19,7 @@ const Project: FC<Props> = ({ project, image_right = false }) => {
         <ImageSlider images={images} />
       </div>
       <div className="w-full md:w-1/3 text-left md:text-center gap-3 pt-3 md:pt-0 px-0 md:pl-2 flex flex-col justify-between items-center">
-        <h3 className="text-xl w-full font-semibold dark:text-zinc-100 uppercase">
+        <h3 className="text-xl w-full font-semibold dark:text-zinc-100 uppercase tracking-tight">
           {title}
         </h3>
         <div className="w-full text-xs dark:text-zinc-400 text-zinc-600">
