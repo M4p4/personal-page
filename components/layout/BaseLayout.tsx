@@ -8,13 +8,13 @@ type Props = {
 
 const BaseLayout: FC<Props> = ({ children }) => {
   return (
-    <>
+    <div className="flex flex-col h-screen justify-between">
       <Navbar />
-      <main className="max-w-2xl y-2 mx-auto min-h-screen px-5 md:px-3">
+      <main className="max-w-2xl y-2 mb-auto w-full mx-auto px-5 md:px-3">
         {children}
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 
