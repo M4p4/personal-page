@@ -41,7 +41,7 @@ const HomePage: FC<Props> = ({ posts }) => {
         <VoxelLoader />
         <div className="px-2 w-full absolute bottom-1 left-0 right-0 md:px-10">
           <div className="bg-orange-200/30 dark:bg-zinc-700/30 text-center w-full p-3 rounded-md my-3">
-            I am currently working from Europe remotly based in 🇩🇪
+            I am currently working from europe remotly based in 🇩🇪
           </div>
         </div>
       </div>
