@@ -10,6 +10,7 @@ import Spinner from '../components/ui/Spinner';
 import projects from '../_data/projects.json';
 import NextHeadSeo from 'next-head-seo';
 import Headline from 'components/ui/Headline';
+import { blurImage } from 'lib/helpers';
 
 const VoxelLoader = dynamic(
   () => import('../components/animation/VoxelLoader'),
@@ -57,6 +58,8 @@ const HomePage: FC<Props> = ({ posts }) => {
             className="object-cover rounded-full border border-slate-300 dark:border-zinc-700 h-full"
             src="/images/me.jpg"
             alt="Jaro Ratz"
+            placeholder="blur"
+            blurDataURL={blurImage(180, 180)}
             width={180}
             height={180}
           />
