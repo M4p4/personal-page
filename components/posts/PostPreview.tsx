@@ -11,7 +11,10 @@ type Props = {
 
 const PostPreview: FC<Props> = ({ post, mode }) => {
   const { date } = post;
-  const postDate = useMemo(() => new Date(date).toLocaleDateString(), [date]);
+  const postDate = useMemo(
+    () => new Date(date).toLocaleDateString('de-De'),
+    [date]
+  );
 
   if (mode === 'full') {
     return (

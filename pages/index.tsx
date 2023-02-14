@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Project from 'components/project';
 import { getAllPosts } from 'lib/MDXLoader';
 import { GetStaticProps } from 'next';
@@ -47,23 +48,24 @@ const HomePage: FC<Props> = ({ posts }) => {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-between items-center mt-4">
+      <div className="flex flex-col-reverse md:flex-row justify-between items-center mt-4 gap-4">
         <div className="flex flex-col py-2 w-full md:w-auto">
-          <h1 className="text-4xl font-bold dark:text-zinc-100">Jaro Ratz</h1>
-          <p className="mt-1">Full Stack Web Developer and SEO Specialist</p>
+          <h1 className="text-4xl xl:text-5xl font-bold dark:text-zinc-100 md:leading-normal leading-tight">
+            I'm{' '}
+            <span className="dark:text-orange-400 text-orange-800">Jaro</span>.
+            I'm a full stack developer and SEO specialist.
+          </h1>
         </div>
 
-        <div className="h-24 w-24">
-          <Image
-            className="object-cover rounded-full border border-slate-300 dark:border-zinc-700 h-full"
-            src="/images/me.jpg"
-            alt="Jaro Ratz"
-            placeholder="blur"
-            blurDataURL={blurImage(180, 180)}
-            width={180}
-            height={180}
-          />
-        </div>
+        <Image
+          className="object-cover rounded-full border border-slate-300 dark:border-zinc-700 h-32 w-32"
+          src="/images/me.jpg"
+          alt="Jaro Ratz"
+          placeholder="blur"
+          blurDataURL={blurImage(180, 180)}
+          width={180}
+          height={180}
+        />
       </div>
 
       <Headline title="Work Experience" />

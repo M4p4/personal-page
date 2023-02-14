@@ -18,7 +18,7 @@ const BlogPostPage: FC<Props> = ({ post, source }) => {
     <>
       <NextHeadSeo title={`${post.title}`} description={`${post.excerpt}`} />
       <article className="prose justify-between dark:prose-invert mt-4">
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight dark:text-zinc-100 mb-0">
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight md:tracking-normal dark:text-zinc-100 mb-0">
           {post.title}
         </h1>
         <div className="flex justify-start space-x-2 items-center mt-2">
