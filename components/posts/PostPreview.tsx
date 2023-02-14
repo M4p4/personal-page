@@ -21,7 +21,7 @@ const PostPreview: FC<Props> = ({ post, mode }) => {
       <Link className="group" href={`/blog/${post.slug}`}>
         <div className="flex flex-col md:flex-row justify-between items-center gap-2 md:gap-4">
           <Image
-            className="rounded-xl object-cover h-64 w-full md:w-48 md:h-36 bg-orange-200 border border-slate-300 dark:border-zinc-700 group-hover:brightness-125"
+            className="rounded-xl object-cover h-64 w-full md:w-48 md:h-36 bg-white border border-slate-300 dark:border-zinc-700 group-hover:brightness-125"
             src={post.coverImage}
             alt={post.title}
             placeholder="blur"
@@ -49,7 +49,7 @@ const PostPreview: FC<Props> = ({ post, mode }) => {
         <div className="flex flex-col w-full group cursor-pointer">
           <div className="relative">
             <Image
-              className="rounded-xl object-cover w-full h-48 bg-orange-200 border border-slate-300 dark:border-zinc-700"
+              className="rounded-xl object-cover w-full h-48 bg-white border border-slate-300 dark:border-zinc-700"
               src={post.coverImage}
               alt={post.title}
               placeholder="blur"

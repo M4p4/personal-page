@@ -52,7 +52,7 @@ const HomePage: FC<Props> = ({ posts }) => {
         <div className="flex flex-col py-2 w-full md:w-auto">
           <h1 className="text-4xl xl:text-5xl font-bold dark:text-zinc-100 md:leading-normal leading-tight">
             I'm{' '}
-            <span className="dark:text-orange-400 text-orange-800">Jaro</span>.
+            <span className="dark:text-orange-400 text-orange-600">Jaro</span>.
             I'm a full stack developer and SEO specialist.
           </h1>
         </div>
