@@ -1,24 +1,24 @@
-import ImageSlider from 'components/ui/ImageSlider';
-import { classNames } from 'lib/helpers';
+import Image from 'next/image';
 import React, { FC } from 'react';
 import { Project } from 'types';
 import Tag from './Tag';
 
 type Props = {
-  image_right?: boolean;
   project: Project;
 };
 
-const Project: FC<Props> = ({ project, image_right = false }) => {
-  const order = image_right ? 'md:flex-row-reverse' : 'md:flex-row';
-  const { images, title, date, tags, description } = project;
-
+const Project: FC<Props> = ({ project }) => {
+  const { image, title, date, tags, description } = project;
   return (
-    <div className={classNames(order, 'flex flex-col justify-between')}>
-      <div className="flex w-full md:w-2/3 overflow-hidden mb-auto justify-start">
-        <ImageSlider images={images} />
-      </div>
-      <div className="w-full md:w-1/3 text-left md:text-center gap-3 pt-3 md:pt-0 px-0 md:pl-2 flex flex-col justify-between items-center">
+    <div className="flex flex-col md:flex-row items-center">
+      <Image
+        className="w-full md:w-2/3 rounded-md"
+        src={image}
+        alt={title}
+        width={640}
+        height={480}
+      />
+      <div className="w-full md:w-1/2 text-left md:text-center gap-3 pt-3 md:pt-0 px-0 md:pl-2 flex flex-col justify-between items-center">
         <h3 className="text-xl w-full font-semibold dark:text-zinc-100 uppercase tracking-tight">
           {title}
         </h3>

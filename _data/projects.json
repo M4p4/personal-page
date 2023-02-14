@@ -3,13 +3,7 @@
     "title": "Next Tube",
     "tags": ["# typescript", "# tailwind", "# nextjs", "# mongodb"],
     "description": "This project can be used as a adult-tube or a normal tube website like youtube.com, it comes with a comprehensive search and recommendation engine and can scale up easily.",
-    "images": [
-      "/images/wheels/1.png",
-      "/images/wheels/2.png",
-      "/images/wheels/3.png",
-      "/images/wheels/4.png"
-    ],
-    "date": "2022",
-    "image_right": false
+    "image": "/images/projects/p1_preview.png",
+    "date": "2022"
   }
 ]

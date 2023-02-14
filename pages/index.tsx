@@ -46,6 +46,9 @@ const HomePage: FC<Props> = ({ posts }) => {
             I am currently working from europe remotly based in 🇩🇪
           </div>
         </div>
+        <div className="absolute opacity-20 dark:opacity-40 -top-[100px] lg:-top-[200px] -z-10">
+          <img alt="background for voxel" src="/images/bg-voxel.png" />
+        </div>
       </div>
 
       <div className="flex flex-col-reverse md:flex-row justify-between items-center mt-4 gap-4">
@@ -79,11 +82,7 @@ const HomePage: FC<Props> = ({ posts }) => {
 
       <Headline title="Latest Projects" />
       {projects.map((project) => (
-        <Project
-          key={project.title}
-          project={project}
-          image_right={project.image_right || false}
-        />
+        <Project key={project.title} project={project} />
       ))}
 
       <Headline title="Latest Posts" />

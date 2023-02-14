@@ -5,7 +5,7 @@ export type Post = {
 };
 
 export type Project = {
-  images: string[];
+  image: string;
   title: string;
   date: string;
   tags: string[];
