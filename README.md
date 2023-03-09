@@ -9,10 +9,7 @@ My personal homepage is built using NextJS and TypeScript, it features a clean a
 - dark / light theme
 - selfmade voxel 3d animation as herosection
 - SEO pages
-
-### Todos?
-
-- contact me form / subpage
+- contact page
 
 ### How to run?
 
