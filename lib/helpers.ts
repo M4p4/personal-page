@@ -20,5 +20,10 @@ const createSolidColorBase64 = (
 };
 
 export const blurImage = (w: number, h: number) => {
-  return createSolidColorBase64(w, h, '#333');
+  const defaultBase64Color =
+    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8DwHwAFBQIAZQ6iSAAAAABJRU5ErkJggg==';
+  if (typeof window !== 'undefined') {
+    return createSolidColorBase64(w, h, '#333');
+  }
+  return defaultBase64Color;
 };
