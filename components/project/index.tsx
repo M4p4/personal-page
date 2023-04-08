@@ -19,7 +19,7 @@ const Project: FC<Props> = ({ project }) => {
         width={900}
         height={600}
         placeholder="blur"
-        blurDataURL={blurImage(1024, 1024)}
+        blurDataURL={blurImage(900, 600)}
       />
       <div className="w-full md:w-1/2 text-left md:text-center gap-3 pt-3 md:pt-0 px-0 md:pl-2 flex flex-col justify-between items-center">
         <h3 className="text-xl w-full font-semibold dark:text-zinc-100 uppercase tracking-tight">
