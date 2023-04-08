@@ -1,4 +1,4 @@
-import { blurImage, classNames } from 'lib/helpers';
+import { classNames } from 'lib/helpers';
 import React, { FC, useEffect, useState } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
@@ -75,8 +75,6 @@ const ImageSlider: FC<Props> = ({ title, images, timeout = 15 }) => {
         className="rounded-b-md w-full object-fill h-96 md:h-80"
         width={1024}
         height={1024}
-        placeholder="blur"
-        blurDataURL={blurImage(1024, 1024)}
       />
     </div>
   );
