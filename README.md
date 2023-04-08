@@ -4,12 +4,11 @@ My personal homepage is built using NextJS and TypeScript, it features a clean a
 
 ### What does it support?
 
-- md / mdx format blog
-- project showcase with custom imageslider
-- dark / light theme
-- selfmade voxel 3d animation as herosection
-- SEO pages
-- contact page
+- MD / MDX format blog
+- Project showcase with custom imageslider
+- Dark / Light theme
+- Voxel 3d animation support for herosection
+- Contact page
 
 ### How to run?
 
