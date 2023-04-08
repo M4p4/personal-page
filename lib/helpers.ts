@@ -2,25 +2,23 @@ export const classNames = (...classes: string[]) => {
   return classes.filter(Boolean).join(' ');
 };
 
-const shimmer = (w: number, h: number) => `
-<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <defs>
-    <linearGradient id="g">
-      <stop stop-color="#333" offset="20%" />
-      <stop stop-color="#222" offset="50%" />
-      <stop stop-color="#333" offset="70%" />
-    </linearGradient>
-  </defs>
-  <rect width="${w}" height="${h}" fill="#333" />
-  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
-  <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
-</svg>`;
+const createSolidColorBase64 = (
+  width: number,
+  height: number,
+  color: string
+): string => {
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 
-const toBase64 = (str: string) =>
-  typeof window === 'undefined'
-    ? Buffer.from(str).toString('base64')
-    : window.btoa(str);
+  canvas.width = width;
+  canvas.height = height;
+
+  ctx.fillStyle = color;
+  ctx.fillRect(0, 0, width, height);
+
+  return canvas.toDataURL('image/png');
+};
 
 export const blurImage = (w: number, h: number) => {
-  return `data:image/svg+xml;base64,${toBase64(shimmer(100, 100))}`;
+  return createSolidColorBase64(w, h, '#333');
 };
