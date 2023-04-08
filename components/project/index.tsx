@@ -1,3 +1,4 @@
+import { blurImage } from 'lib/helpers';
 import Image from 'next/image';
 import React, { FC } from 'react';
 import { Project } from 'types';
@@ -17,6 +18,8 @@ const Project: FC<Props> = ({ project }) => {
         alt={title}
         width={900}
         height={600}
+        placeholder="blur"
+        blurDataURL={blurImage(1024, 1024)}
       />
       <div className="w-full md:w-1/2 text-left md:text-center gap-3 pt-3 md:pt-0 px-0 md:pl-2 flex flex-col justify-between items-center">
         <h3 className="text-xl w-full font-semibold dark:text-zinc-100 uppercase tracking-tight">
