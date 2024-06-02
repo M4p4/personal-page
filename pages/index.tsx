@@ -43,7 +43,7 @@ const HomePage: FC<Props> = ({ posts }) => {
         <VoxelLoader />
         <div className="px-2 w-full absolute bottom-1 left-0 right-0 md:px-10">
           <div className="bg-orange-200/30 dark:bg-zinc-700/30 text-center w-full p-3 rounded-md my-3">
-            I am soon working from europe remotly based in 🇩🇪
+            I am working remotely from europe based in 🇩🇪
           </div>
         </div>
         <div className="absolute opacity-20 dark:opacity-40 -top-[100px] lg:-top-[200px] -z-10">
@@ -73,7 +73,7 @@ const HomePage: FC<Props> = ({ posts }) => {
 
       <Headline title="Work Experience" />
       <p>
-        With 7 years of experience in web development and SEO, I am a skilled
+        With 9 years of experience in web development and SEO, I am a skilled
         specialist with a passion for building beautiful, high-performing
         websites. My focus is on delivering results and helping businesses
         succeed online, and I specialize in using latest frameworks like Flask
