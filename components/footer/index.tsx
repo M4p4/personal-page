@@ -1,11 +1,13 @@
 import GithubIcon from 'components/icons/GithubIcon';
 import Link from 'next/link';
 import React from 'react';
+import SpaceScene from './SpaceScene';
 
 const Footer = () => {
   return (
-    <footer className="p-5">
-      <div className="inline-flex w-full items-center justify-center p-4 text-center text-zinc-500">
+    <footer className="relative w-full overflow-hidden">
+      <SpaceScene />
+      <div className="pointer-events-none absolute inset-x-0 bottom-3 z-10 inline-flex w-full items-center justify-center text-center text-sm text-zinc-400 drop-shadow-sm dark:text-zinc-200">
         Made with{' '}
         <svg
           xmlns="http://www.w3.org/2000/svg"
