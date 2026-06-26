@@ -11,7 +11,7 @@ type Props = {
 const Posts: FC<Props> = ({ posts, mode = 'full' }) => {
   if (posts.length === 0) {
     return (
-      <div className="text-center py-5 mx-auto font-medium bg-orange-200/30 dark:bg-zinc-700/30 rounded-md">
+      <div className="mx-auto rounded-md bg-orange-200/30 py-5 text-center font-medium dark:bg-zinc-700/30">
         There are no posts yet!
       </div>
     );
@@ -21,7 +21,7 @@ const Posts: FC<Props> = ({ posts, mode = 'full' }) => {
     <div
       className={classNames(
         'grid grid-cols-1 gap-4',
-        mode === 'compact' ? 'md:grid-cols-2' : ''
+        mode === 'compact' ? 'md:grid-cols-2' : '',
       )}
     >
       {posts.map((post) => (

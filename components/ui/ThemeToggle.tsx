@@ -44,9 +44,9 @@ const ThemeToggle = () => {
             aria-label="Toggle theme"
           >
             {t === 'light' ? (
-              <SunIcon className="w-4 h-4" />
+              <SunIcon className="h-4 w-4" />
             ) : (
-              <MoonIcon className="w-4 h-4" />
+              <MoonIcon className="h-4 w-4" />
             )}
           </button>
         );

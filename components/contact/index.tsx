@@ -74,7 +74,7 @@ const ContactForm = () => {
         following form.
       </p>
 
-      <div className="flex flex-col justify-center mt-5 space-y-1">
+      <div className="mt-5 flex flex-col justify-center space-y-1">
         {/* Honeypot — hidden from users, bots tend to fill it in. */}
         <input
           type="text"
@@ -87,54 +87,56 @@ const ContactForm = () => {
           onChange={(e) => setForm({ ...form, botcheck: e.target.value })}
         />
 
-        <label className="font-semibold pt-2">Subject</label>
+        <label className="pt-2 font-semibold">Subject</label>
         <input
           type="text"
           name="subject"
           id="subject"
           value={form.subject}
           placeholder="Your subject"
-          className="px-3 py-2 rounded-md bg-orange-100 dark:bg-zinc-800 focus:outline-none placeholder:text-zinc-500"
+          className="rounded-md bg-orange-100 px-3 py-2 placeholder:text-zinc-500 focus:outline-none dark:bg-zinc-800"
           onChange={(e) => setForm({ ...form, subject: e.target.value })}
         />
 
-        <label className="font-semibold pt-2">Email</label>
+        <label className="pt-2 font-semibold">Email</label>
         <input
           type="text"
           name="email"
           id="email"
           value={form.email}
           placeholder="Your email"
-          className="px-3 py-2 rounded-md bg-orange-100 dark:bg-zinc-800 focus:outline-none placeholder:text-zinc-500"
+          className="rounded-md bg-orange-100 px-3 py-2 placeholder:text-zinc-500 focus:outline-none dark:bg-zinc-800"
           onChange={(e) => setForm({ ...form, email: e.target.value })}
         />
 
-        <label className="font-semibold pt-2">Message</label>
+        <label className="pt-2 font-semibold">Message</label>
         <textarea
           style={{ resize: 'none' }}
           rows={5}
           value={form.message}
           placeholder="Your message..."
-          className="px-3 py-2 rounded-md bg-orange-100 dark:bg-zinc-800 focus:outline-none placeholder:text-zinc-500"
+          className="rounded-md bg-orange-100 px-3 py-2 placeholder:text-zinc-500 focus:outline-none dark:bg-zinc-800"
           onChange={(e) => setForm({ ...form, message: e.target.value })}
         />
 
-        <div className="pt-3 w-full">
+        <div className="w-full pt-3">
           {hasErrors ? (
-            <div className="mb-3 dark:text-red-600 text-red-800">
-              <p className="font-semibold">Please fix the following errors...</p>
+            <div className="mb-3 text-red-800 dark:text-red-600">
+              <p className="font-semibold">
+                Please fix the following errors...
+              </p>
               {errors.map((error) => (
                 <li key={error}>{error}</li>
               ))}
             </div>
           ) : null}
           {showMessage ? (
-            <div className="mb-3 dark:text-green-600 text-green-800">
+            <div className="mb-3 text-green-800 dark:text-green-600">
               Thank you, your email has been sent successfully!
             </div>
           ) : null}
           <button
-            className="bg-teal-600 hover:bg-teal-500 disabled:opacity-60 disabled:cursor-not-allowed p-2 rounded-xl text-slate-100 w-full"
+            className="w-full rounded-xl bg-teal-600 p-2 text-slate-100 hover:bg-teal-500 disabled:cursor-not-allowed disabled:opacity-60"
             onClick={sendMessage}
             disabled={submitting}
           >

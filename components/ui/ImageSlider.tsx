@@ -27,34 +27,34 @@ const ImageSlider: FC<Props> = ({ title, images, timeout = 15 }) => {
       setCurrentImage(currentImage + 1 >= images.length ? 0 : currentImage + 1);
     else
       setCurrentImage(
-        currentImage - 1 < 0 ? images.length - 1 : currentImage - 1
+        currentImage - 1 < 0 ? images.length - 1 : currentImage - 1,
       );
   };
 
   return (
-    <div className="rounded-md bg-zinc-800 relative">
-      <div className="flex flex-row items-center justify-start gap-2 px-2 h-7">
-        <div className="bg-red-500 rounded-full w-2 h-2"></div>
-        <div className="bg-yellow-500 rounded-full w-2 h-2"></div>
-        <div className="bg-green-500 rounded-full w-2 h-2"></div>
-        <div className="absolute w-full flex-1 text-center font-semibold text-sm text-zinc-100 dark:text-zinc-800">
+    <div className="relative rounded-md bg-zinc-800">
+      <div className="flex h-7 flex-row items-center justify-start gap-2 px-2">
+        <div className="h-2 w-2 rounded-full bg-red-500"></div>
+        <div className="h-2 w-2 rounded-full bg-yellow-500"></div>
+        <div className="h-2 w-2 rounded-full bg-green-500"></div>
+        <div className="absolute w-full flex-1 text-center text-sm font-semibold text-zinc-100 dark:text-zinc-800">
           {title}
         </div>
         {displayNavigation && (
           <>
-            <div className="absolute left-0 top-[50%]">
+            <div className="absolute top-[50%] left-0">
               <ChevronLeftIcon
-                className="w-10 h-10 hover:fill-white cursor-pointer fill-zinc-100"
+                className="h-10 w-10 cursor-pointer fill-zinc-100 hover:fill-white"
                 onClick={handleChangeImage.bind(null, false)}
               />
             </div>
-            <div className="absolute right-0 top-[50%]">
+            <div className="absolute top-[50%] right-0">
               <ChevronRightIcon
-                className="w-10 h-10 hover:fill-white cursor-pointer fill-zinc-100"
+                className="h-10 w-10 cursor-pointer fill-zinc-100 hover:fill-white"
                 onClick={handleChangeImage.bind(null, true)}
               />
             </div>
-            <div className="absolute w-full bottom-5 flex flex-row justify-center items-center gap-3">
+            <div className="absolute bottom-5 flex w-full flex-row items-center justify-center gap-3">
               {images.map((image, i) => (
                 <div
                   key={i}
@@ -62,8 +62,8 @@ const ImageSlider: FC<Props> = ({ title, images, timeout = 15 }) => {
                     setCurrentImage(i);
                   }}
                   className={classNames(
-                    i === currentImage ? 'bg-zinc-50 ' : 'bg-zinc-200 ',
-                    'p-2 rounded-full w-5 h-5 border border-zinc-50 opacity-90'
+                    i === currentImage ? 'bg-zinc-50' : 'bg-zinc-200',
+                    'h-5 w-5 rounded-full border border-zinc-50 p-2 opacity-90',
                   )}
                 ></div>
               ))}
@@ -74,7 +74,7 @@ const ImageSlider: FC<Props> = ({ title, images, timeout = 15 }) => {
       <Image
         src={images[currentImage]}
         alt={`${title} - Picture ${currentImage + 1}`}
-        className="rounded-b-md w-full object-fill h-96 md:h-80"
+        className="h-96 w-full rounded-b-md object-fill md:h-80"
         width={1024}
         height={1024}
         placeholder="blur"

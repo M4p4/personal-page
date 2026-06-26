@@ -1,7 +1,7 @@
-import { blurImage } from 'lib/helpers';
+import { blurImage, formatDate } from 'lib/helpers';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { FC, useMemo } from 'react';
+import React, { FC } from 'react';
 import { Post, PostPreviewMode } from '../../types';
 
 type Props = {
@@ -10,18 +10,14 @@ type Props = {
 };
 
 const PostPreview: FC<Props> = ({ post, mode }) => {
-  const { date } = post;
-  const postDate = useMemo(
-    () => new Date(date).toLocaleDateString('de-De'),
-    [date]
-  );
+  const postDate = formatDate(post.date);
 
   if (mode === 'full') {
     return (
       <Link className="group" href={`/blog/${post.slug}`}>
-        <div className="flex flex-col md:flex-row justify-between items-center gap-2 md:gap-4">
+        <div className="flex flex-col items-center justify-between gap-2 md:flex-row md:gap-4">
           <Image
-            className="rounded-xl object-cover h-64 w-full md:w-48 md:h-36 bg-white border border-slate-300 dark:border-zinc-700 group-hover:brightness-125"
+            className="h-64 w-full rounded-xl border border-slate-300 bg-white object-cover group-hover:brightness-125 md:h-36 md:w-48 dark:border-zinc-700"
             src={post.coverImage}
             alt={post.title}
             placeholder="blur"
@@ -29,14 +25,14 @@ const PostPreview: FC<Props> = ({ post, mode }) => {
             width={480}
             height={320}
           />
-          <div className="flex flex-col justify-start items-center gap-2 py-2">
-            <div className="text-left w-full font-normal text-sm inline-flex justify-start items-center gap-2 text-orange-800 dark:text-orange-400">
-              <span>{postDate}</span> •<span>{post.readTime} read</span>
-            </div>
-            <div className="text-left w-full font-medium text-xl">
+          <div className="flex flex-col items-center justify-start gap-2 py-2">
+            <div className="w-full text-left text-xl font-medium text-orange-600 dark:text-orange-400">
               {post.title}
             </div>
-            <div className="text-left text-sm w-full opacity-80">
+            <div className="inline-flex w-full items-center justify-start gap-2 text-left text-sm font-normal opacity-70">
+              <span>{postDate}</span> ·<span>{post.readTime} read</span>
+            </div>
+            <div className="w-full text-left text-sm opacity-80">
               {post.excerpt}
             </div>
           </div>
@@ -46,10 +42,10 @@ const PostPreview: FC<Props> = ({ post, mode }) => {
   } else {
     return (
       <Link className="group" href={`/blog/${post.slug}`}>
-        <div className="flex flex-col w-full group cursor-pointer">
+        <div className="group flex w-full cursor-pointer flex-col">
           <div className="relative">
             <Image
-              className="rounded-xl object-cover w-full h-48 bg-white border border-slate-300 dark:border-zinc-700"
+              className="h-48 w-full rounded-xl border border-slate-300 bg-white object-cover dark:border-zinc-700"
               src={post.coverImage}
               alt={post.title}
               placeholder="blur"
@@ -57,14 +53,14 @@ const PostPreview: FC<Props> = ({ post, mode }) => {
               width={480}
               height={320}
             />
-            <div className="absolute bottom-1 right-1">
-              <span className="opacity-0 group-hover:opacity-100 font-medium text-xs bg-orange-200 dark:bg-zinc-800 p-1 rounded-md group-hover:bg-opacity-80 duration-500 ease-in-out">
+            <div className="absolute right-1 bottom-1">
+              <span className="group-hover:bg-opacity-80 rounded-md bg-orange-200 p-1 text-xs font-medium opacity-0 duration-500 ease-in-out group-hover:opacity-100 dark:bg-zinc-800">
                 {post.readTime} read
               </span>
             </div>
           </div>
 
-          <div className="text-center pt-3 pb-1">{post.title}</div>
+          <div className="pt-3 pb-1 text-center">{post.title}</div>
         </div>
       </Link>
     );

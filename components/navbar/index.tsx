@@ -14,8 +14,8 @@ const navigation = [
   { name: 'Blog', href: '/blog' },
   {
     name: (
-      <div className="inline-flex justify-center items-center gap-1">
-        <GithubIcon className="w-5 h-5" /> Github
+      <div className="inline-flex items-center justify-center gap-1">
+        <GithubIcon className="h-5 w-5" /> Github
       </div>
     ),
     href: 'https://github.com/m4p4',
@@ -32,8 +32,8 @@ const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const pathname = usePathname();
   return (
-    <header className="sticky backdrop-blur-md w-full top-0 py-2 px-5 md:px-3 z-10">
-      <nav className="flex flex-row items-center gap-3 max-w-4xl mx-auto px-0">
+    <header className="sticky top-0 z-10 w-full px-5 py-2 backdrop-blur-md md:px-3">
+      <nav className="mx-auto flex max-w-4xl flex-row items-center gap-3 px-0">
         <NavbarButton
           onClick={() => {
             if (!showMenu) {
@@ -44,9 +44,9 @@ const Navbar = () => {
           className="md:hidden"
         >
           {showMenu ? (
-            <XMarkIcon className="w-5 h-5" />
+            <XMarkIcon className="h-5 w-5" />
           ) : (
-            <Bars3Icon className="w-5 h-5" />
+            <Bars3Icon className="h-5 w-5" />
           )}
         </NavbarButton>
         {navigation.map((item) => (

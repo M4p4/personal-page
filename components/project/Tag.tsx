@@ -6,7 +6,7 @@ type Props = {
 
 const Tag: FC<Props> = ({ title }) => {
   return (
-    <div className="bg-teal-600 text-xs font-semibold rounded-md px-2 py-1">
+    <div className="rounded-md bg-teal-600 px-2 py-1 text-xs font-semibold">
       {title}
     </div>
   );

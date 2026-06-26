@@ -17,7 +17,7 @@ export async function POST(req: Request) {
   } catch {
     return NextResponse.json(
       { ok: false, error: 'Invalid request body.' },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -32,7 +32,7 @@ export async function POST(req: Request) {
   if (!subject.trim() || !message.trim() || !emailRegex.test(email)) {
     return NextResponse.json(
       { ok: false, error: 'Please fill in all fields with a valid email.' },
-      { status: 422 }
+      { status: 422 },
     );
   }
 
@@ -41,10 +41,12 @@ export async function POST(req: Request) {
   const from = process.env.CONTACT_FROM;
 
   if (!apiKey || !to || !from) {
-    console.error('Contact form is missing RESEND_API_KEY/CONTACT_MAIL/CONTACT_FROM.');
+    console.error(
+      'Contact form is missing RESEND_API_KEY/CONTACT_MAIL/CONTACT_FROM.',
+    );
     return NextResponse.json(
       { ok: false, error: 'The contact form is not configured.' },
-      { status: 500 }
+      { status: 500 },
     );
   }
 
@@ -62,7 +64,7 @@ export async function POST(req: Request) {
       console.error('Resend error:', error);
       return NextResponse.json(
         { ok: false, error: 'Failed to send your message. Please try again.' },
-        { status: 502 }
+        { status: 502 },
       );
     }
 
@@ -71,7 +73,7 @@ export async function POST(req: Request) {
     console.error('Contact form error:', err);
     return NextResponse.json(
       { ok: false, error: 'Failed to send your message. Please try again.' },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

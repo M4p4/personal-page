@@ -12,7 +12,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: process.env.PAGE_URL ? new URL(process.env.PAGE_URL) : undefined,
+  metadataBase: process.env.PAGE_URL
+    ? new URL(process.env.PAGE_URL)
+    : undefined,
   title: {
     default: 'Jaro Ratz - Web Developer & SEO Specialist',
     template: '%s | Jaro Ratz',
@@ -42,9 +44,9 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body>
-        <div className="flex flex-col min-h-screen h-full">
+        <div className="flex h-full min-h-screen flex-col">
           <Navbar />
-          <main className="max-w-4xl w-full mb-auto py-2 mx-auto px-5 md:px-3">
+          <main className="mx-auto mb-auto w-full max-w-4xl px-5 py-2 md:px-3">
             {children}
           </main>
           <Footer />
