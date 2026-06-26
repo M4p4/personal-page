@@ -40,3 +40,22 @@ export function getAllPosts(selection: string[] = []) {
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
   return posts;
 }
+
+// Posts are sorted newest-first, so the neighbour at index + 1 is older and
+// the one at index - 1 is newer.
+export function getAdjacentPosts(slug: string) {
+  const posts = getAllPosts(['title', 'slug', 'date']);
+  const index = posts.findIndex((post) => post.slug === slug);
+
+  if (index === -1) {
+    return { older: null, newer: null };
+  }
+
+  const toLink = (post?: Post) =>
+    post ? { title: post.title, slug: post.slug } : null;
+
+  return {
+    older: toLink(posts[index + 1]),
+    newer: toLink(posts[index - 1]),
+  };
+}

@@ -26,7 +26,7 @@ const PostPreview: FC<Props> = ({ post, mode }) => {
             height={320}
           />
           <div className="flex flex-col items-center justify-start gap-2 py-2">
-            <div className="w-full text-left text-xl font-medium text-orange-600 dark:text-orange-400">
+            <div className="w-full text-left text-xl font-medium text-orange-600 group-hover:underline dark:text-orange-400">
               {post.title}
             </div>
             <div className="inline-flex w-full items-center justify-start gap-2 text-left text-sm font-normal opacity-70">
