@@ -8,7 +8,7 @@ const STAR_LAYERS = [
   { count: 26, speed: 14, size: 1.1, twinkle: 0.7 },
   { count: 12, speed: 26, size: 1.7, twinkle: 1.0 },
 ];
-const ASTEROID_COUNT = 6;
+const ASTEROID_COUNT = 12;
 const ASTEROID_MIN_SPEED = 18;
 const ASTEROID_MAX_SPEED = 46;
 const ASTEROID_MIN_R = 7;
@@ -16,7 +16,7 @@ const ASTEROID_MAX_R = 20;
 const SHIP_X_RATIO = 0.26; // horizontal position of the ship
 const SHIP_BOB_AMP = 7; // px the ship bobs up/down
 const SHIP_BOB_SPEED = 1.6; // bob cycles speed
-const SHIP_SCALE = 1.0;
+const SHIP_SCALE = 1.35;
 const MAX_PARTICLES = 90;
 const EMIT_PER_SEC = 120;
 
@@ -258,6 +258,13 @@ const SpaceScene = () => {
       ctx.lineTo(-15, 7);
       ctx.closePath();
       ctx.fill();
+
+      // hull decal: 1337 :)
+      ctx.fillStyle = colors.accent;
+      ctx.font = 'bold 7px ui-monospace, SFMono-Regular, Menlo, monospace';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('1337', -6, 0.5);
 
       // cockpit window
       ctx.beginPath();
