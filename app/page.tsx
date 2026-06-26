@@ -24,17 +24,17 @@ export default function HomePage() {
     <>
       <VoxelHero />
 
-      <div className="flex flex-col-reverse md:flex-row justify-between items-center mt-4 gap-4">
-        <div className="flex flex-col py-2 w-full md:w-auto">
-          <h1 className="text-4xl xl:text-5xl font-bold dark:text-zinc-100 md:leading-normal leading-tight">
+      <div className="mt-4 flex flex-col-reverse items-center justify-between gap-4 md:flex-row">
+        <div className="flex w-full flex-col py-2 md:w-auto">
+          <h1 className="text-4xl leading-tight font-bold md:leading-normal xl:text-5xl dark:text-zinc-100">
             I'm{' '}
-            <span className="dark:text-orange-400 text-orange-600">Jaro</span>.
+            <span className="text-orange-600 dark:text-orange-400">Jaro</span>.
             I'm a full stack developer and SEO specialist.
           </h1>
         </div>
 
         <Image
-          className="object-cover rounded-full border border-slate-300 dark:border-zinc-700 h-32 w-32"
+          className="h-32 w-32 rounded-full border border-slate-300 object-cover dark:border-zinc-700"
           src="/images/me.jpg"
           alt="Jaro Ratz"
           placeholder="blur"

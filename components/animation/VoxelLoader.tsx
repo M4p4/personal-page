@@ -12,7 +12,7 @@ const Model = () => {
 
 const VoxelLoader = () => {
   return (
-    <div className="w-full h-96">
+    <div className="h-96 w-full">
       <Canvas shadows dpr={[1, 2]} camera={{ position: [4, 4, 5] }}>
         {/* Intensities scaled up for three r155+ physically-correct lighting
             (legacy lighting was the default under the old three/r3f versions). */}

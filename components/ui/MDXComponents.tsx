@@ -13,11 +13,11 @@ const MDXComponents = {
       sizes="(max-width: 768px) 100vw, 768px"
       placeholder="blur"
       blurDataURL={blurImage(1080, 720)}
-      className="rounded-md w-full h-auto object-cover"
+      className="h-auto w-full rounded-md object-cover"
     />
   ),
   a: (props: any) => (
-    <Link href={props.href} className="dark:text-teal-500 text-teal-700">
+    <Link href={props.href} className="text-teal-700 dark:text-teal-500">
       {props.children}
     </Link>
   ),
