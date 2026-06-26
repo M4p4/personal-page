@@ -25,12 +25,7 @@ export const metadata: Metadata = {
 const themeScript = `
   (function () {
     try {
-      var theme = localStorage.getItem('theme');
-      if (!theme) {
-        theme = window.matchMedia('(prefers-color-scheme: dark)').matches
-          ? 'dark'
-          : 'light';
-      }
+      var theme = localStorage.getItem('theme') || 'dark';
       if (theme === 'dark') document.documentElement.classList.add('dark');
     } catch (e) {}
   })();
