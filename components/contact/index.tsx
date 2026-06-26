@@ -1,50 +1,26 @@
 'use client';
 
 import React, { useState } from 'react';
-
-const initFormState = {
-  message: '',
-  subject: '',
-  email: '',
-  botcheck: '',
-};
-
-type ContactForm = {
-  message: string;
-  subject: string;
-  email: string;
-  botcheck: string;
-};
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { contactSchema, type ContactInput } from 'lib/contactSchema';
+import Field from 'components/ui/Field';
 
 const ContactForm = () => {
-  const [form, setForm] = useState<ContactForm>(initFormState);
-  const [errors, setErrors] = useState<string[]>([]);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactInput>({ resolver: zodResolver(contactSchema) });
+
+  const [serverError, setServerError] = useState('');
   const [showMessage, setShowMessage] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
 
-  const hasErrors = errors.length !== 0;
-
-  const sendMessage = async () => {
-    setErrors([]);
+  const onSubmit = async (form: ContactInput) => {
+    setServerError('');
     setShowMessage(false);
-    const validationErrors = [];
-    const emailRegex =
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    if (form.subject.length === 0)
-      validationErrors.push("Subject can't be empty!");
-    if (form.email.length === 0) validationErrors.push("Email can't be empty!");
-    if (!emailRegex.test(form.email))
-      validationErrors.push('Email has invalid format');
-    if (form.message.length === 0)
-      validationErrors.push("Message can't be empty!");
-
-    if (validationErrors.length !== 0) {
-      setErrors(validationErrors);
-      return;
-    }
-
-    setSubmitting(true);
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -54,16 +30,14 @@ const ContactForm = () => {
       const data = await res.json().catch(() => ({}));
 
       if (!res.ok || !data.ok) {
-        setErrors([data.error || 'Something went wrong. Please try again.']);
+        setServerError(data.error || 'Something went wrong. Please try again.');
         return;
       }
 
       setShowMessage(true);
-      setForm(initFormState);
+      reset();
     } catch {
-      setErrors(['Network error. Please try again.']);
-    } finally {
-      setSubmitting(false);
+      setServerError('Network error. Please try again.');
     }
   };
 
@@ -74,60 +48,54 @@ const ContactForm = () => {
         following form.
       </p>
 
-      <div className="mt-5 flex flex-col justify-center space-y-1">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        noValidate
+        className="mt-5 flex flex-col justify-center space-y-1"
+      >
         {/* Honeypot — hidden from users, bots tend to fill it in. */}
         <input
           type="text"
-          name="botcheck"
           tabIndex={-1}
           autoComplete="off"
           className="hidden"
           aria-hidden="true"
-          value={form.botcheck}
-          onChange={(e) => setForm({ ...form, botcheck: e.target.value })}
+          {...register('botcheck')}
         />
 
-        <label className="pt-2 font-semibold">Subject</label>
-        <input
-          type="text"
-          name="subject"
+        <Field
+          label="Subject"
           id="subject"
-          value={form.subject}
-          placeholder="Your subject"
-          className="rounded-md bg-orange-100 px-3 py-2 placeholder:text-zinc-500 focus:outline-none dark:bg-zinc-800"
-          onChange={(e) => setForm({ ...form, subject: e.target.value })}
-        />
-
-        <label className="pt-2 font-semibold">Email</label>
-        <input
           type="text"
-          name="email"
-          id="email"
-          value={form.email}
-          placeholder="Your email"
-          className="rounded-md bg-orange-100 px-3 py-2 placeholder:text-zinc-500 focus:outline-none dark:bg-zinc-800"
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
+          placeholder="Your subject"
+          error={errors.subject}
+          {...register('subject')}
         />
 
-        <label className="pt-2 font-semibold">Message</label>
-        <textarea
-          style={{ resize: 'none' }}
+        <Field
+          label="Email"
+          id="email"
+          type="text"
+          placeholder="Your email"
+          error={errors.email}
+          {...register('email')}
+        />
+
+        <Field
+          label="Message"
+          id="message"
+          multiline
           rows={5}
-          value={form.message}
           placeholder="Your message..."
-          className="rounded-md bg-orange-100 px-3 py-2 placeholder:text-zinc-500 focus:outline-none dark:bg-zinc-800"
-          onChange={(e) => setForm({ ...form, message: e.target.value })}
+          style={{ resize: 'none' }}
+          error={errors.message}
+          {...register('message')}
         />
 
         <div className="w-full pt-3">
-          {hasErrors ? (
+          {serverError ? (
             <div className="mb-3 text-red-800 dark:text-red-600">
-              <p className="font-semibold">
-                Please fix the following errors...
-              </p>
-              {errors.map((error) => (
-                <li key={error}>{error}</li>
-              ))}
+              {serverError}
             </div>
           ) : null}
           {showMessage ? (
@@ -136,14 +104,14 @@ const ContactForm = () => {
             </div>
           ) : null}
           <button
-            className="w-full rounded-xl bg-teal-600 p-2 text-slate-100 hover:bg-teal-500 disabled:cursor-not-allowed disabled:opacity-60"
-            onClick={sendMessage}
-            disabled={submitting}
+            type="submit"
+            className="w-full cursor-pointer rounded-xl bg-orange-600 p-2 text-slate-100 hover:bg-orange-500 disabled:cursor-not-allowed disabled:opacity-60"
+            disabled={isSubmitting}
           >
-            {submitting ? 'Sending…' : 'Send Message'}
+            {isSubmitting ? 'Sending…' : 'Send Message'}
           </button>
         </div>
-      </div>
+      </form>
     </>
   );
 };

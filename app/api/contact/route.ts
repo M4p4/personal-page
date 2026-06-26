@@ -1,16 +1,9 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
-
-const emailRegex =
-  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+import { contactSchema } from 'lib/contactSchema';
 
 export async function POST(req: Request) {
-  let body: {
-    subject?: string;
-    email?: string;
-    message?: string;
-    botcheck?: string;
-  };
+  let body: unknown;
 
   try {
     body = await req.json();
@@ -21,20 +14,26 @@ export async function POST(req: Request) {
     );
   }
 
-  const { subject = '', email = '', message = '', botcheck = '' } = body;
-
   // Honeypot: a filled hidden field means a bot. Pretend success, send nothing.
-  if (botcheck) {
+  if (
+    body &&
+    typeof body === 'object' &&
+    'botcheck' in body &&
+    body.botcheck
+  ) {
     return NextResponse.json({ ok: true });
   }
 
-  // Server-side validation — never trust the client.
-  if (!subject.trim() || !message.trim() || !emailRegex.test(email)) {
+  // Server-side validation — never trust the client. Same schema as the form.
+  const parsed = contactSchema.safeParse(body);
+  if (!parsed.success) {
     return NextResponse.json(
       { ok: false, error: 'Please fill in all fields with a valid email.' },
       { status: 422 },
     );
   }
+
+  const { subject, email, message } = parsed.data;
 
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.CONTACT_MAIL;
