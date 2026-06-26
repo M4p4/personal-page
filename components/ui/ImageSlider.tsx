@@ -1,3 +1,5 @@
+'use client';
+
 import { blurImage, classNames } from 'lib/helpers';
 import React, { FC, useEffect, useState } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';

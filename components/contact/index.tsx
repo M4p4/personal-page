@@ -1,29 +1,30 @@
-import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+'use client';
 
-type Props = {};
+import React, { useState } from 'react';
 
 const initFormState = {
   message: '',
   subject: '',
   email: '',
+  botcheck: '',
 };
 
 type ContactForm = {
   message: string;
   subject: string;
   email: string;
+  botcheck: string;
 };
 
-const ContactForm = (props: Props) => {
+const ContactForm = () => {
   const [form, setForm] = useState<ContactForm>(initFormState);
   const [errors, setErrors] = useState<string[]>([]);
   const [showMessage, setShowMessage] = useState(false);
-  const router = useRouter();
+  const [submitting, setSubmitting] = useState(false);
 
   const hasErrors = errors.length !== 0;
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
     setErrors([]);
     setShowMessage(false);
     const validationErrors = [];
@@ -42,13 +43,28 @@ const ContactForm = (props: Props) => {
       setErrors(validationErrors);
       return;
     }
-    setShowMessage(true);
-    setForm(initFormState);
-    router.push(
-      `mailto:${process.env.CONTACT_MAIL}?subject=${
-        encodeURIComponent(form.subject) || ''
-      }&body=${encodeURIComponent(form.message) || ''}`
-    );
+
+    setSubmitting(true);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok || !data.ok) {
+        setErrors([data.error || 'Something went wrong. Please try again.']);
+        return;
+      }
+
+      setShowMessage(true);
+      setForm(initFormState);
+    } catch {
+      setErrors(['Network error. Please try again.']);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -59,6 +75,18 @@ const ContactForm = (props: Props) => {
       </p>
 
       <div className="flex flex-col justify-center mt-5 space-y-1">
+        {/* Honeypot — hidden from users, bots tend to fill it in. */}
+        <input
+          type="text"
+          name="botcheck"
+          tabIndex={-1}
+          autoComplete="off"
+          className="hidden"
+          aria-hidden="true"
+          value={form.botcheck}
+          onChange={(e) => setForm({ ...form, botcheck: e.target.value })}
+        />
+
         <label className="font-semibold pt-2">Subject</label>
         <input
           type="text"
@@ -94,9 +122,7 @@ const ContactForm = (props: Props) => {
         <div className="pt-3 w-full">
           {hasErrors ? (
             <div className="mb-3 dark:text-red-600 text-red-800">
-              <p className="font-semibold">
-                Please fix the following errors...
-              </p>
+              <p className="font-semibold">Please fix the following errors...</p>
               {errors.map((error) => (
                 <li key={error}>{error}</li>
               ))}
@@ -108,10 +134,11 @@ const ContactForm = (props: Props) => {
             </div>
           ) : null}
           <button
-            className="bg-teal-600 hover:bg-teal-500 p-2 rounded-xl text-slate-100 w-full"
+            className="bg-teal-600 hover:bg-teal-500 disabled:opacity-60 disabled:cursor-not-allowed p-2 rounded-xl text-slate-100 w-full"
             onClick={sendMessage}
+            disabled={submitting}
           >
-            Send Message
+            {submitting ? 'Sending…' : 'Send Message'}
           </button>
         </div>
       </div>

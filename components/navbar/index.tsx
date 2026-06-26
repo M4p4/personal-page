@@ -1,11 +1,13 @@
-import { useRouter } from 'next/router';
+'use client';
+
+import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
 import ThemeToggle from '../ui/ThemeToggle';
 import NavbarButton from './NavbarButton';
 import { XMarkIcon, Bars3Icon } from '@heroicons/react/24/solid';
 import NavbarItem from './NavbarItem';
 import GithubIcon from 'components/icons/GithubIcon';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -28,7 +30,7 @@ const variants = {
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const { pathname } = useRouter();
+  const pathname = usePathname();
   return (
     <header className="sticky backdrop-blur-md w-full top-0 py-2 px-5 md:px-3 z-10">
       <nav className="flex flex-row items-center gap-3 max-w-4xl mx-auto px-0">

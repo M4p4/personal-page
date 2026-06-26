@@ -1,7 +1,9 @@
-import { motion, useReducedMotion } from 'framer-motion';
+'use client';
+
+import { motion, useReducedMotion, type Variants } from 'motion/react';
 import { ReactNode } from 'react';
 
-const variants = {
+const variants: Variants = {
   initial: {
     opacity: 0,
     y: 8,
@@ -20,7 +22,7 @@ type Props = {
   children: ReactNode;
 };
 
-export const PageTransition = ({ children }: Props): JSX.Element => {
+export const PageTransition = ({ children }: Props) => {
   const prefersReducedMotion = useReducedMotion();
   if (prefersReducedMotion) return <>{children}</>;
   return (

@@ -1,43 +1,36 @@
-import React, { useEffect, useState } from 'react';
+'use client';
+
+import React, { useSyncExternalStore } from 'react';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/solid';
 
-const themes = ['light', 'dark'];
+const themes = ['light', 'dark'] as const;
+
+// The theme lives on <html class="dark"> (set before paint by the inline script
+// in app/layout.tsx). useSyncExternalStore reads it without a hydration mismatch.
+const subscribe = (callback: () => void) => {
+  window.addEventListener('theme-change', callback);
+  return () => window.removeEventListener('theme-change', callback);
+};
+
+const getSnapshot = (): 'light' | 'dark' =>
+  document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+
+const getServerSnapshot = (): null => null;
 
 const ThemeToggle = () => {
-  const [isMounted, setIsMounted] = useState(false);
-  const [theme, setTheme] = useState(() => {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme');
-    }
-    if (
-      typeof window !== 'undefined' &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches
-    ) {
-      return 'dark';
-    }
-    return 'light';
-  });
+  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     localStorage.setItem('theme', newTheme);
-    setTheme(newTheme);
+    document.documentElement.classList.toggle('dark', newTheme === 'dark');
+    window.dispatchEvent(new Event('theme-change'));
   };
 
-  useEffect(() => {
-    const root = document.documentElement;
-    if (theme === 'light') {
-      root.classList.remove('dark');
-    } else {
-      root.classList.add('dark');
-    }
-  }, [theme]);
+  // null until hydrated on the client — avoids rendering a mismatched toggle.
+  if (!theme) return <></>;
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  return isMounted ? (
+  return (
     <div className="inline-flex items-center rounded-3xl bg-orange-300 p-[1px] dark:bg-zinc-600">
       {themes.map((t) => {
         const checked = t === theme;
@@ -59,8 +52,6 @@ const ThemeToggle = () => {
         );
       })}
     </div>
-  ) : (
-    <></>
   );
 };
 

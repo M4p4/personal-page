@@ -1,7 +1,7 @@
 import { blurImage } from 'lib/helpers';
 import Image from 'next/image';
 import React, { FC } from 'react';
-import { Project } from 'types';
+import type { Project } from 'types';
 import Tag from './Tag';
 
 type Props = {

@@ -1,6 +1,12 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+/* Class-based dark mode (toggled manually by ThemeToggle) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-inter: var(--font-inter-sans), serif;
+}
 
 body {
   @apply font-inter bg-orange-50 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-300;

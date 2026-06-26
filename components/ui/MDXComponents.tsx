@@ -1,5 +1,5 @@
 import { blurImage } from 'lib/helpers';
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
@@ -10,10 +10,10 @@ const MDXComponents = {
       src={props.src}
       width={1080}
       height={720}
+      sizes="(max-width: 768px) 100vw, 768px"
       placeholder="blur"
       blurDataURL={blurImage(1080, 720)}
-      layout={'responsive'}
-      className="rounded-md w-full object-cover"
+      className="rounded-md w-full h-auto object-cover"
     />
   ),
   a: (props: any) => (
