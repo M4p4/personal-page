@@ -1,5 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
+import { ArrowLongRightIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
+import Link from 'next/link';
 import Project from 'components/project';
 import Posts from 'components/posts/Posts';
 import Headline from 'components/ui/Headline';
@@ -60,6 +62,16 @@ export default function HomePage() {
 
       <Headline title="Latest Posts" />
       <Posts mode="compact" posts={latestPosts} />
+
+      <div className="mt-6 flex justify-center">
+        <Link
+          href="/blog"
+          className="group inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-2 font-medium transition-colors hover:border-orange-400 hover:text-orange-600 dark:border-zinc-700 dark:bg-zinc-800/50 dark:hover:border-orange-400 dark:hover:text-orange-400"
+        >
+          View all posts
+          <ArrowLongRightIcon className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+        </Link>
+      </div>
     </>
   );
 }
