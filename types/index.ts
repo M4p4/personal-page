@@ -8,6 +8,7 @@ export type Post = {
   date: string;
   readTime: string;
   coverImage: string;
+  tags: string[];
   showCover?: boolean;
   draft?: boolean;
   author: {

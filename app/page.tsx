@@ -17,6 +17,7 @@ export default function HomePage() {
     'date',
     'readTime',
     'slug',
+    'tags',
   ]);
   const latestPosts = posts.slice(0, 2);
 

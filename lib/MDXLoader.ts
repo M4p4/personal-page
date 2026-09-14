@@ -26,6 +26,10 @@ export const getPostBySlug = (slug: string, selection: string[] = []) => {
   const items: Record<string, unknown> = {};
 
   selection.forEach((field) => {
+    if (field === 'tags') {
+      items[field] = Array.isArray(data.tags) ? data.tags.map(String) : [];
+      return;
+    }
     if (field === 'slug') {
       items[field] = slug;
     }
@@ -38,7 +42,6 @@ export const getPostBySlug = (slug: string, selection: string[] = []) => {
     }
   });
 
-  // Only the selected fields are loaded, so callers must request what they read.
   return items as Post;
 };
 

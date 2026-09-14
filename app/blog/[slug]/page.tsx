@@ -11,6 +11,7 @@ import MDXComponents from 'components/ui/MDXComponents';
 import ReadingProgress from 'components/posts/ReadingProgress';
 import ShareButtons from 'components/posts/ShareButtons';
 import PostFooterNav from 'components/posts/PostFooterNav';
+import TagList from 'components/ui/TagList';
 
 type Params = { slug: string };
 
@@ -59,6 +60,7 @@ export default async function PostPage({
     'coverImage',
     'showCover',
     'draft',
+    'tags',
   ]);
   const { older, newer } = getAdjacentPosts(slug);
 
@@ -90,6 +92,7 @@ export default async function PostPage({
           </div>
           <ShareButtons title={post.title} />
         </div>
+        <TagList tags={post.tags} className="mt-3" />
         {post.showCover && post.coverImage && (
           <Image
             className="mt-6 h-auto w-full rounded-xl border border-slate-300 object-cover dark:border-zinc-700"
