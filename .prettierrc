@@ -1,5 +1,11 @@
 {
   "singleQuote": true,
   "plugins": ["prettier-plugin-tailwindcss"],
-  "tailwindStylesheet": "./app/globals.css"
+  "tailwindStylesheet": "./app/globals.css",
+  "overrides": [
+    {
+      "files": "*.mdx",
+      "options": { "embeddedLanguageFormatting": "off" }
+    }
+  ]
 }

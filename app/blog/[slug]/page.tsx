@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
-import { MDXRemote } from 'next-mdx-remote/rsc';
+import { MDXRemote } from 'next-mdx-remote-client/rsc';
 import Image from 'next/image';
-import rehypeHighlight from 'rehype-highlight';
+import rehypePrettyCode, {
+  type Options as PrettyCodeOptions,
+} from 'rehype-pretty-code';
+import remarkGfm from 'remark-gfm';
 import { getAdjacentPosts, getAllSlugs, getPostBySlug } from 'lib/MDXLoader';
 import { blurImage, formatDate } from 'lib/helpers';
 import MDXComponents from 'components/ui/MDXComponents';
@@ -10,6 +13,11 @@ import ShareButtons from 'components/posts/ShareButtons';
 import PostFooterNav from 'components/posts/PostFooterNav';
 
 type Params = { slug: string };
+
+const prettyCodeOptions: PrettyCodeOptions = {
+  theme: { light: 'github-light', dark: 'github-dark-dimmed' },
+  defaultLang: { block: 'plaintext' },
+};
 
 export const dynamicParams = false;
 
@@ -98,7 +106,12 @@ export default async function PostPage({
           <MDXRemote
             source={post.content}
             components={MDXComponents}
-            options={{ mdxOptions: { rehypePlugins: [rehypeHighlight] } }}
+            options={{
+              mdxOptions: {
+                remarkPlugins: [remarkGfm],
+                rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
+              },
+            }}
           />
         </article>
       </div>
