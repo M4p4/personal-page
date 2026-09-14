@@ -25,33 +25,46 @@ export default function HomePage() {
     <>
       <VoxelHero />
 
-      <div className="mt-4 flex flex-col-reverse items-center justify-between gap-4 md:flex-row">
+      <div className="mt-4 flex flex-col-reverse items-center justify-between gap-6 md:flex-row md:gap-12">
         <div className="flex w-full flex-col py-2 md:w-auto">
           <h1 className="text-4xl leading-tight font-bold md:leading-normal xl:text-5xl dark:text-zinc-100">
-            I'm{' '}
-            <span className="text-orange-600 dark:text-orange-400">Jaro</span>.
-            I'm a full stack developer and SEO specialist.
+            Hey, I'm{' '}
+            <span className="text-orange-600 dark:text-orange-400">Jaro</span>{' '}
+            <span className="mt-2 block text-xl font-semibold lg:text-2xl">
+              Developer & SEO Specialist
+            </span>
           </h1>
+          <p className="mt-3 text-lg text-zinc-600 dark:text-zinc-400">
+            Currently based in Germany, with 9 years of experience developing,
+            launching, and scaling websites.
+          </p>
         </div>
 
         <Image
-          className="h-32 w-32 rounded-full border border-slate-300 object-cover dark:border-zinc-700"
+          className="h-44 w-44 shrink-0 rounded-full border border-slate-300 object-cover md:h-52 md:w-52 dark:border-zinc-700"
           src="/images/me.jpg"
           alt="Jaro Ratz"
           placeholder="blur"
-          blurDataURL={blurImage(180, 180)}
-          width={180}
-          height={180}
+          blurDataURL={blurImage(240, 240)}
+          width={240}
+          height={240}
         />
       </div>
 
-      <Headline title="Work Experience" />
+      <Headline title="About Me" />
       <p>
-        With 9 years of experience in web development and SEO, I am a skilled
-        specialist with a passion for building beautiful, high-performing
-        websites. My focus is on delivering results and helping businesses
-        succeed online, and I specialize in using latest frameworks like Flask
-        or NextJS to create dynamic and effective online solutions.
+        I'm a web developer who loves building things. I code mostly in Python
+        and TypeScript. Right now I work mainly with Django, and before that I
+        built projects with Next.js and Flask.
+      </p>
+      <p className="mt-4">
+        Outside of web development, I'm into AI agents, self-improvement, and
+        swing trading.
+      </p>
+      <p className="mt-4">
+        This site is where I share my journey. Writing here is my way of getting
+        back into my old routines, so expect posts about my projects, my trades,
+        and anything else that catches my interest.
       </p>
 
       <Headline title="Latest Projects" />

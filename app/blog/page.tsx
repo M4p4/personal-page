@@ -26,10 +26,7 @@ export default function BlogPage() {
       <h1 className="mt-4 mb-4 text-3xl font-bold tracking-tight md:text-4xl dark:text-zinc-100">
         Blog
       </h1>
-      <p>
-        Welcome to my personal blog where I share my thoughts and experiences on
-        programming and search engine optimization (SEO).
-      </p>
+      <p>I write about coding, trading, and whatever else is on my mind.</p>
       <Headline title="All Posts" />
       <PostSearch posts={posts} />
     </>
