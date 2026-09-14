@@ -5,6 +5,7 @@ import rehypePrettyCode, {
   type Options as PrettyCodeOptions,
 } from 'rehype-pretty-code';
 import remarkGfm from 'remark-gfm';
+import remarkMermaid from 'lib/remarkMermaid';
 import { getAdjacentPosts, getAllSlugs, getPostBySlug } from 'lib/MDXLoader';
 import { blurImage, formatDate } from 'lib/helpers';
 import MDXComponents from 'components/ui/MDXComponents';
@@ -111,7 +112,7 @@ export default async function PostPage({
             components={MDXComponents}
             options={{
               mdxOptions: {
-                remarkPlugins: [remarkGfm],
+                remarkPlugins: [remarkGfm, remarkMermaid],
                 rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
               },
             }}

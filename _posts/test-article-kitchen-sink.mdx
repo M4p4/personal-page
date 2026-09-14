@@ -142,6 +142,56 @@ Badges also work inside tables:
 | 05.09.2026 | NVDA   | <Badge>Pullback</Badge> | <Badge type="loss">-5.54%</Badge> |
 | 09.09.2026 | MSFT   | <Badge>Earnings</Badge> | <Badge type="gain">+5.25%</Badge> |
 
+## Diagrams
+
+A code block with the `mermaid` language turns into a diagram that follows the light and dark theme:
+
+````md
+```mermaid
+flowchart LR
+  A[Idea] --> B[Draft]
+```
+````
+
+A flowchart:
+
+```mermaid
+flowchart LR
+  A[Scan watchlist] --> B{Setup valid?}
+  B -- Yes --> C[Size position]
+  B -- No --> A
+  C --> D[Enter trade]
+  D --> E{Stop or target?}
+  E -- Target --> F[Take profit]
+  E -- Stop --> G[Cut loss]
+  F --> H[Journal]
+  G --> H
+```
+
+A sequence diagram:
+
+```mermaid
+sequenceDiagram
+  participant Browser
+  participant Next as Next.js
+  participant MDX as MDX pipeline
+  Browser->>Next: GET /blog/my-post
+  Next->>MDX: Compile post content
+  MDX-->>Next: React elements
+  Next-->>Browser: HTML
+  Browser->>Browser: Render mermaid diagrams
+```
+
+A pie chart:
+
+```mermaid
+pie title Portfolio allocation
+  "Stocks" : 55
+  "ETFs" : 25
+  "Crypto" : 12
+  "Cash" : 8
+```
+
 ## Markdown extras
 
 - [x] Draft posts
