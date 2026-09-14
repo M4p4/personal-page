@@ -1,0 +1,45 @@
+---
+title: 'Test Article: Everything the Blog Can Render'
+excerpt: 'A draft post that exercises every content feature of this blog, so changes to the MDX pipeline can be checked in one place.'
+coverImage: '/images/blog/test-article-kitchen-sink/cover.jpg'
+showCover: true
+date: '2026-09-14T08:00:00.000Z'
+readTime: '3 min'
+draft: true
+author:
+  name: Jaro
+  image: '/images/me.jpg'
+ogImage:
+  url: '/images/blog/test-article-kitchen-sink/cover.jpg'
+---
+
+This post is a draft. It only shows up while running `bun dev` and returns a 404 in production builds. Every content feature the blog supports gets a section here, so one page is enough to check that nothing broke.
+
+## Text
+
+Regular paragraphs with **bold**, _italic_ and [an internal link](/blog). Lists work as usual:
+
+- First item
+- Second item with more text to check wrapping on smaller screens
+- Third item
+
+1. Numbered one
+2. Numbered two
+
+> A blockquote, for quoting someone or calling out a thought.
+
+## Images
+
+Images come from `public/images/blog/<slug>/`. Put a description in quotes after the path and it shows up as a caption under the image:
+
+```md
+![Alt text for screen readers](/images/blog/my-post/chart.png 'Caption shown under the image')
+```
+
+![Markdown cover used as an inline test image](/images/blog/test-article-kitchen-sink/inline.png 'The Markdown article cover, used here to test an image with a description. Longer captions wrap onto a second line and keep the accent bar on the left.')
+
+Without a description, the image stands on its own:
+
+![Cover image repeated inside the article](/images/blog/test-article-kitchen-sink/cover.jpg)
+
+Text after the images to check the spacing below them.
