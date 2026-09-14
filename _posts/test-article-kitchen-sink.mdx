@@ -43,3 +43,94 @@ Without a description, the image stands on its own:
 ![Cover image repeated inside the article](/images/blog/test-article-kitchen-sink/cover.jpg)
 
 Text after the images to check the spacing below them.
+
+## Code
+
+Inline code like `bun run build` stays plain. Add a language suffix to highlight it: `const total = price * quantity{:ts}`.
+
+A block with a title and highlighted lines (`title="…" {3-4}`):
+
+```ts title="lib/position.ts" {3-4}
+type Position = { symbol: string; entry: number; size: number };
+
+export const pnl = (position: Position, price: number) =>
+  (price - position.entry) * position.size;
+
+export const pnlPercent = (position: Position, price: number) => {
+  const change = (price - position.entry) / position.entry;
+  return Math.round(change * 10000) / 100;
+};
+```
+
+Line numbers (`showLineNumbers`):
+
+```python showLineNumbers
+import pandas as pd
+
+def moving_average(prices: pd.Series, window: int = 20) -> pd.Series:
+    """Simple moving average over the given window."""
+    return prices.rolling(window=window).mean()
+
+df = pd.read_csv("prices.csv", parse_dates=["date"])
+df["sma_20"] = moving_average(df["close"])
+print(df.tail())
+```
+
+Highlighting a word everywhere it appears (`/useState/`):
+
+```tsx /useState/
+import { useState } from 'react';
+
+export function Counter() {
+  const [count, setCount] = useState(0);
+  return <button onClick={() => setCount(count + 1)}>Clicked {count} times</button>;
+}
+```
+
+A few more languages:
+
+```bash
+bun add rehype-pretty-code shiki
+bun run build
+```
+
+```json title="package.json"
+{
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build"
+  }
+}
+```
+
+```diff
+- import rehypeHighlight from 'rehype-highlight';
++ import rehypePrettyCode from 'rehype-pretty-code';
+```
+
+A block without a language:
+
+```
+Plain text without a language.
+It still gets the same frame and spacing.
+```
+
+## Tables
+
+| Symbol |  Entry |   Exit | Result |
+| :----- | -----: | -----: | :----: |
+| AAPL   | 182.40 | 195.10 | +6.96% |
+| NVDA   | 121.00 | 114.30 | -5.54% |
+| MSFT   | 410.25 | 431.80 | +5.25% |
+
+## Markdown extras
+
+- [x] Draft posts
+- [x] Code highlighting
+- [ ] Tags
+
+~~This sentence is struck through.~~ URLs turn into links on their own: https://nextjs.org
+
+Footnotes work too.[^1]
+
+[^1]: This is the footnote text, collected at the bottom of the article.
