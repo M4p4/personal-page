@@ -11,6 +11,8 @@ import PostFooterNav from 'components/posts/PostFooterNav';
 
 type Params = { slug: string };
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
 }
@@ -48,6 +50,7 @@ export default async function PostPage({
     'excerpt',
     'coverImage',
     'showCover',
+    'draft',
   ]);
   const { older, newer } = getAdjacentPosts(slug);
 
@@ -69,6 +72,12 @@ export default async function PostPage({
             <div className="text-sm opacity-70">
               {post.author.name} · {formatDate(post.date)} · {post.readTime}{' '}
               read
+              {post.draft && (
+                <span className="font-semibold text-orange-600 dark:text-orange-400">
+                  {' '}
+                  · Draft
+                </span>
+              )}
             </div>
           </div>
           <ShareButtons title={post.title} />
