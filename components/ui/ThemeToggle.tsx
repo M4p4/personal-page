@@ -1,24 +1,13 @@
 'use client';
 
-import React, { useSyncExternalStore } from 'react';
+import React from 'react';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/solid';
+import useTheme from 'lib/useTheme';
 
 const themes = ['light', 'dark'] as const;
 
-// The theme lives on <html class="dark"> (set before paint by the inline script
-// in app/layout.tsx). useSyncExternalStore reads it without a hydration mismatch.
-const subscribe = (callback: () => void) => {
-  window.addEventListener('theme-change', callback);
-  return () => window.removeEventListener('theme-change', callback);
-};
-
-const getSnapshot = (): 'light' | 'dark' =>
-  document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-
-const getServerSnapshot = (): null => null;
-
 const ThemeToggle = () => {
-  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const theme = useTheme();
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';

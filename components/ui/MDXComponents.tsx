@@ -4,9 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { ComponentPropsWithoutRef } from 'react';
 import Badge from './Badge';
+import Mermaid from './Mermaid';
 
 const MDXComponents = {
   Badge,
+  Mermaid,
   img: ({ src, alt, title }: ComponentPropsWithoutRef<'img'>) => (
     <span className="not-prose my-8 block">
       <Image
