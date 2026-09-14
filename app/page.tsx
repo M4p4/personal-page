@@ -1,5 +1,4 @@
 /* eslint-disable react/no-unescaped-entities */
-import { ArrowLongRightIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 import Project from 'components/project';
 import Posts from 'components/posts/Posts';

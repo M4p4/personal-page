@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Cog6ToothIcon } from '@heroicons/react/24/solid';
 import { Html } from '@react-three/drei';
 

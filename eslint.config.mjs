@@ -1,12 +1,19 @@
-import nextCoreWebVitals from 'eslint-config-next/core-web-vitals';
-import eslintConfigPrettier from 'eslint-config-prettier/flat';
+import { defineConfig, globalIgnores } from 'eslint/config';
+import nextVitals from 'eslint-config-next/core-web-vitals';
+import nextTs from 'eslint-config-next/typescript';
+import prettier from 'eslint-config-prettier/flat';
 
-const eslintConfig = [
-  ...nextCoreWebVitals,
-  eslintConfigPrettier,
-  {
-    ignores: ['.next/**', 'node_modules/**', 'public/**'],
-  },
-];
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  ...nextTs,
+  prettier,
+  globalIgnores([
+    '.next/**',
+    'out/**',
+    'build/**',
+    'next-env.d.ts',
+    'public/**',
+  ]),
+]);
 
 export default eslintConfig;

@@ -1,7 +1,21 @@
 export type PostPreviewMode = 'compact' | 'full';
 
 export type Post = {
-  [key: string]: any;
+  title: string;
+  excerpt: string;
+  slug: string;
+  content: string;
+  date: string;
+  readTime: string;
+  coverImage: string;
+  showCover?: boolean;
+  author: {
+    name: string;
+    image: string;
+  };
+  ogImage?: {
+    url: string;
+  };
 };
 
 export type Project = {
