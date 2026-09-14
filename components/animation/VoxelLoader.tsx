@@ -5,6 +5,9 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import VoxelSpinner from './VoxelSpinner';
 
+const cameraPosition: [number, number, number] = [4, 4, 5];
+const polarAngle = Math.acos(cameraPosition[1] / Math.hypot(...cameraPosition));
+
 const Model = () => {
   const { scene } = useGLTF('/animations/jaro.glb');
   return <primitive object={scene} scale={1.4} position={[0, -1, 0]} />;
@@ -12,8 +15,8 @@ const Model = () => {
 
 const VoxelLoader = () => {
   return (
-    <div className="h-96 w-full">
-      <Canvas shadows dpr={[1, 2]} camera={{ position: [4, 4, 5] }}>
+    <div className="h-96 w-full cursor-grab active:cursor-grabbing">
+      <Canvas shadows dpr={[1, 2]} camera={{ position: cameraPosition }}>
         {/* Intensities scaled up for three r155+ physically-correct lighting
             (legacy lighting was the default under the old three/r3f versions). */}
         <ambientLight intensity={1.5} position={[4, 4, 5]} />
@@ -21,7 +24,14 @@ const VoxelLoader = () => {
         <Suspense fallback={<VoxelSpinner />}>
           <Model />
         </Suspense>
-        <OrbitControls rotateSpeed={0.001} autoRotate enableZoom={false} />
+        <OrbitControls
+          autoRotate
+          rotateSpeed={0.35}
+          enableZoom={false}
+          enablePan={false}
+          minPolarAngle={polarAngle}
+          maxPolarAngle={polarAngle}
+        />
       </Canvas>
     </div>
   );
