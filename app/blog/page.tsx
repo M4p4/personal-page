@@ -19,6 +19,7 @@ export default function BlogPage() {
     'readTime',
     'slug',
     'content',
+    'tags',
   ]);
 
   return (

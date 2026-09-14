@@ -50,7 +50,13 @@ figure[data-rehype-pretty-code-figure] pre {
 [data-rehype-pretty-code-figure] code[data-line-numbers] > [data-line]::before {
   counter-increment: line;
   content: counter(line);
-  @apply mr-4 inline-block w-4 text-right text-zinc-400 dark:text-zinc-500;
+  @apply mr-4 inline-block w-4 text-right text-zinc-400;
+}
+.dark
+  [data-rehype-pretty-code-figure]
+  code[data-line-numbers]
+  > [data-line]::before {
+  @apply text-zinc-500;
 }
 [data-rehype-pretty-code-title] {
   @apply mt-0 rounded-t-xl border border-b-0 border-slate-300 bg-slate-200/60 px-4 py-2 font-mono text-xs text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300;

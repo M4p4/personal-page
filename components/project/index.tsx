@@ -1,9 +1,9 @@
 import GithubIcon from 'components/icons/GithubIcon';
+import TagList from 'components/ui/TagList';
 import { blurImage } from 'lib/helpers';
 import Image from 'next/image';
 import React, { FC } from 'react';
 import type { Project } from 'types';
-import Tag from './Tag';
 
 type Props = {
   project: Project;
@@ -30,11 +30,7 @@ const Project: FC<Props> = ({ project }) => {
           <p className="text-sm text-zinc-600 dark:text-zinc-400">{date}</p>
         </div>
         <p>{description}</p>
-        <div className="flex flex-wrap gap-x-3 gap-y-1">
-          {tags.map((tag) => (
-            <Tag key={tag} title={tag} />
-          ))}
-        </div>
+        <TagList tags={tags} />
         {github && (
           <a
             href={github}
