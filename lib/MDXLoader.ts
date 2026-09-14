@@ -15,7 +15,7 @@ export const getPostBySlug = (slug: string, selection: string[] = []) => {
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
 
-  const items: Post = {};
+  const items: Record<string, unknown> = {};
 
   selection.forEach((field) => {
     if (field === 'slug') {
@@ -30,7 +30,8 @@ export const getPostBySlug = (slug: string, selection: string[] = []) => {
     }
   });
 
-  return items;
+  // Only the selected fields are loaded, so callers must request what they read.
+  return items as Post;
 };
 
 export function getAllPosts(selection: string[] = []) {

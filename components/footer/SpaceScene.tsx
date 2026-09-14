@@ -99,7 +99,7 @@ const SpaceScene = () => {
     if (!ctx) return;
 
     const reduceMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
+      '(prefers-reduced-motion: reduce)',
     ).matches;
 
     let w = 0;
@@ -176,8 +176,7 @@ const SpaceScene = () => {
 
     const drawStars = (t: number) => {
       for (const s of stars) {
-        const tw =
-          0.55 + 0.45 * Math.sin(t * 2 + s.phase) * s.twinkle;
+        const tw = 0.55 + 0.45 * Math.sin(t * 2 + s.phase) * s.twinkle;
         ctx.fillStyle = `rgba(${colors.star}, ${Math.max(0.1, tw)})`;
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
@@ -436,7 +435,7 @@ const SpaceScene = () => {
             cancelAnimationFrame(raf);
           }
         },
-        { threshold: 0 }
+        { threshold: 0 },
       );
       visObserver.observe(wrap);
       raf = requestAnimationFrame(frame);

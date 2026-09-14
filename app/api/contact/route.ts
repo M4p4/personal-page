@@ -15,12 +15,7 @@ export async function POST(req: Request) {
   }
 
   // Honeypot: a filled hidden field means a bot. Pretend success, send nothing.
-  if (
-    body &&
-    typeof body === 'object' &&
-    'botcheck' in body &&
-    body.botcheck
-  ) {
+  if (body && typeof body === 'object' && 'botcheck' in body && body.botcheck) {
     return NextResponse.json({ ok: true });
   }
 

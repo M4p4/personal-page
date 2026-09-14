@@ -1,5 +1,3 @@
-import GithubIcon from 'components/icons/GithubIcon';
-import Link from 'next/link';
 import React from 'react';
 import SpaceScene from './SpaceScene';
 

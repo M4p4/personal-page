@@ -38,7 +38,9 @@ const Field = forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
         />
       )}
       {error && (
-        <p className="text-sm text-red-700 dark:text-red-500">{error.message}</p>
+        <p className="text-sm text-red-700 dark:text-red-500">
+          {error.message}
+        </p>
       )}
     </>
   ),
