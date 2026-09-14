@@ -68,7 +68,7 @@ export default async function PostPage({
     <>
       <ReadingProgress />
       <div className="mx-auto max-w-prose">
-        <h1 className="mt-4 mb-0 text-3xl font-bold tracking-tight text-orange-600 md:text-4xl md:tracking-normal dark:text-orange-400">
+        <h1 className="mt-4 mb-0 text-3xl font-bold tracking-tight md:text-4xl md:tracking-normal dark:text-zinc-100">
           {post.title}
         </h1>
         <div className="mt-4 flex items-center justify-between gap-2">
@@ -92,7 +92,7 @@ export default async function PostPage({
           </div>
           <ShareButtons title={post.title} />
         </div>
-        <TagList tags={post.tags} className="mt-3" />
+        <TagList tags={post.tags} linked className="mt-3" />
         {post.showCover && post.coverImage && (
           <Image
             className="mt-6 h-auto w-full rounded-xl border border-slate-300 object-cover dark:border-zinc-700"
