@@ -1,45 +1,33 @@
-## My Personal Homepage
+# jaroratz.com
 
-My personal homepage is built using NextJS and TypeScript, it features a clean and modern design, showcasing some of my projects and providing information about my skills and experience in a personal blog.
+My personal site with a blog, projects, and a contact form. Live at [jaroratz.com](https://jaroratz.com).
 
-### What does it support?
+Built with Next.js 16, React 19, TypeScript, Tailwind CSS 4, MDX, React Three Fiber, and Resend.
 
-- MD / MDX format blog
-- Project showcase with custom imageslider
-- Dark / Light theme
-- Voxel 3d animation support for herosection
-- Contact page
+## Getting started
 
-### Tech stack
-
-- Next.js 16 & React 19
-- TypeScript
-- Tailwind CSS 4
-- Three.js with React Three Fiber & Drei for the 3d voxel hero
-- MDX & gray-matter for the blog
-- Motion for animations
-- Resend for the contact form
-
-### How to run?
-
-Install the dependencies:
-
-```
-npm install
+```bash
+bun install
+cp .env.example .env.local
+bun dev
 ```
 
-Start the development server:
+| Command          | Description                    |
+| ---------------- | ------------------------------ |
+| `bun dev`        | Dev server on localhost:3000   |
+| `bun run build`  | Production build, then sitemap |
+| `bun start`      | Serve the production build     |
+| `bun run lint`   | ESLint                         |
+| `bun run format` | Prettier                       |
 
-```
-npm run dev
-```
+Set `PAGE_URL` for metadata and the sitemap, and `RESEND_API_KEY`, `CONTACT_MAIL`, `CONTACT_FROM` for the contact form.
 
-Then open [http://localhost:3000](http://localhost:3000) in your browser.
+## Blog posts
 
-Other useful scripts:
+Add an `.mdx` file to `_posts/`, and the file name becomes the URL. Frontmatter takes `title`, `excerpt`, `date`, `readTime`, `coverImage`, `tags`, and `author`. Posts with `draft: true` only show up in `bun dev`.
 
-```
-npm run build   # create a production build
-npm run start   # serve the production build
-npm run lint    # run eslint
-```
+Posts support highlighted code (`title="…"`, `{1-3}`, `showLineNumbers`), image captions (`![alt](src "caption")`), `<Badge type="gain">+5%</Badge>`, Mermaid code blocks, and GFM tables. `_posts/test-article-kitchen-sink.mdx` has an example of each.
+
+## Projects
+
+Projects are listed in `_data/projects.json`.
