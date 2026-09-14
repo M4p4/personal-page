@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import PostSearch from 'components/posts/PostSearch';
+import { Suspense } from 'react';
+import PostSearch, { PostSearchFromParams } from 'components/posts/PostSearch';
 import Headline from 'components/ui/Headline';
 import { getAllPosts } from 'lib/MDXLoader';
 
@@ -29,7 +30,9 @@ export default function BlogPage() {
       </h1>
       <p>I write about coding, trading, and whatever else is on my mind.</p>
       <Headline title="All Posts" />
-      <PostSearch posts={posts} />
+      <Suspense fallback={<PostSearch posts={posts} />}>
+        <PostSearchFromParams posts={posts} />
+      </Suspense>
     </>
   );
 }

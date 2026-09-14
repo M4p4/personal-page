@@ -2,6 +2,8 @@ export const classNames = (...classes: string[]) => {
   return classes.filter(Boolean).join(' ');
 };
 
+export const tagHref = (tag: string) => `/blog?tag=${encodeURIComponent(tag)}`;
+
 export const formatDate = (date: string) =>
   new Date(date).toLocaleDateString('de-DE', {
     day: '2-digit',
