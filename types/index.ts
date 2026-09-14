@@ -10,4 +10,5 @@ export type Project = {
   date: string;
   tags: string[];
   description: string;
+  github?: string;
 };

@@ -1,3 +1,4 @@
+import GithubIcon from 'components/icons/GithubIcon';
 import { blurImage } from 'lib/helpers';
 import Image from 'next/image';
 import React, { FC } from 'react';
@@ -9,11 +10,11 @@ type Props = {
 };
 
 const Project: FC<Props> = ({ project }) => {
-  const { image, title, date, tags, description } = project;
+  const { image, title, date, tags, description, github } = project;
   return (
-    <div className="flex flex-col items-center md:flex-row">
+    <div className="flex flex-col gap-4 md:flex-row md:gap-8">
       <Image
-        className="w-full rounded-md md:w-2/3"
+        className="w-full rounded-md object-cover md:w-3/5"
         src={image}
         alt={title}
         width={900}
@@ -21,22 +22,30 @@ const Project: FC<Props> = ({ project }) => {
         placeholder="blur"
         blurDataURL={blurImage(900, 600)}
       />
-      <div className="flex w-full flex-col items-center justify-between gap-3 px-0 pt-3 text-left md:w-1/2 md:pt-0 md:pl-2 md:text-center">
-        <h3 className="w-full text-xl font-semibold tracking-tight uppercase dark:text-zinc-100">
-          {title}
-        </h3>
-        <div className="w-full text-xs text-zinc-600 dark:text-zinc-400">
-          {date}
+      <div className="flex min-w-0 flex-1 flex-col gap-3 rounded-xl border border-orange-200 p-5 dark:border-zinc-700">
+        <div>
+          <h3 className="text-2xl font-semibold tracking-tight dark:text-zinc-100">
+            {title}
+          </h3>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">{date}</p>
         </div>
         <p>{description}</p>
-        <div className="w-full font-semibold uppercase md:hidden md:w-auto dark:text-gray-500">
-          Technology Stack
-        </div>
-        <div className="flex w-full flex-row flex-wrap items-baseline justify-start gap-3 text-zinc-100 md:w-auto md:justify-center">
+        <div className="flex flex-wrap gap-x-3 gap-y-1">
           {tags.map((tag) => (
             <Tag key={tag} title={tag} />
           ))}
         </div>
+        {github && (
+          <a
+            href={github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-auto inline-flex w-fit items-center gap-2 rounded-md border border-slate-300 px-3 py-1.5 text-sm font-medium transition-colors hover:border-orange-600 hover:text-orange-600 dark:border-zinc-600 dark:text-zinc-100 dark:hover:border-orange-400 dark:hover:text-orange-400"
+          >
+            <GithubIcon className="h-4 w-4" />
+            View on GitHub
+          </a>
+        )}
       </div>
     </div>
   );
