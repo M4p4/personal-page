@@ -3,8 +3,10 @@ import { blurImage, classNames } from 'lib/helpers';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { ComponentPropsWithoutRef } from 'react';
+import Badge from './Badge';
 
 const MDXComponents = {
+  Badge,
   img: ({ src, alt, title }: ComponentPropsWithoutRef<'img'>) => (
     <span className="not-prose my-8 block">
       <Image

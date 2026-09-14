@@ -124,6 +124,24 @@ It still gets the same frame and spacing.
 | NVDA   | 121.00 | 114.30 | -5.54% |
 | MSFT   | 410.25 | 431.80 | +5.25% |
 
+## Badges
+
+Gains and losses get colored badges: the swing trade closed at <Badge type="gain">+12.4%</Badge> while the hedge ended at <Badge type="loss">-3.1%</Badge>. Any other text becomes a neutral badge, like <Badge>Swing trade</Badge> or <Badge>Earnings play</Badge>.
+
+```mdx
+<Badge type="gain">+12.4%</Badge>
+<Badge type="loss">-3.1%</Badge>
+<Badge>Any text</Badge>
+```
+
+Badges also work inside tables:
+
+| Date       | Symbol | Setup                   |                            Result |
+| :--------- | :----- | :---------------------- | --------------------------------: |
+| 02.09.2026 | AAPL   | <Badge>Breakout</Badge> | <Badge type="gain">+6.96%</Badge> |
+| 05.09.2026 | NVDA   | <Badge>Pullback</Badge> | <Badge type="loss">-5.54%</Badge> |
+| 09.09.2026 | MSFT   | <Badge>Earnings</Badge> | <Badge type="gain">+5.25%</Badge> |
+
 ## Markdown extras
 
 - [x] Draft posts
