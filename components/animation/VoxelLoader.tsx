@@ -1,16 +1,30 @@
 'use client';
 
-import React, { Suspense } from 'react';
+import React, { Suspense, useLayoutEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import VoxelSpinner from './VoxelSpinner';
+import Loki from './Loki';
+import Decor from './Decor';
+import MugSteam from './MugSteam';
+import { retouchAtlas } from './retouchAtlas';
 
+const TABLE_COLOR = '#b07a4a';
 const cameraPosition: [number, number, number] = [4, 4, 5];
 const polarAngle = Math.acos(cameraPosition[1] / Math.hypot(...cameraPosition));
 
 const Model = () => {
   const { scene } = useGLTF('/animations/jaro.glb');
-  return <primitive object={scene} scale={1.4} position={[0, -1, 0]} />;
+  useLayoutEffect(() => retouchAtlas(scene, TABLE_COLOR), [scene]);
+
+  return (
+    <group scale={1.4} position={[0, -1, 0]}>
+      <primitive object={scene} />
+      <Decor />
+      <MugSteam position={[1.3, 1.8, 0.7]} />
+      <Loki position={[2.25, 0.2, 0.9]} rotation={[0, 0.5, 0]} />
+    </group>
+  );
 };
 
 const VoxelLoader = () => {
