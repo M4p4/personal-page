@@ -26,17 +26,17 @@ const AvatarStatus = () => {
   return (
     <div className="relative shrink-0">
       <Image
-        className="h-52 w-52 rounded-full object-cover ring-1 ring-zinc-500 md:h-64 md:w-64 dark:ring-zinc-600"
+        className="h-44 w-44 rounded-full object-cover ring-1 ring-zinc-500 md:h-52 md:w-52 dark:ring-zinc-600"
         src="/images/me.jpg"
         alt="Jaro Ratz"
         placeholder="blur"
-        blurDataURL={blurImage(320, 320)}
-        width={320}
-        height={320}
+        blurDataURL={blurImage(240, 240)}
+        width={240}
+        height={240}
       />
       {status && (
         <div
-          className="group absolute bottom-[18px] left-[14px] flex h-8 max-w-8 cursor-default items-center overflow-hidden rounded-full bg-black shadow-sm ring-1 ring-zinc-700 transition-all duration-300 ease-out hover:max-w-80 md:bottom-[22px] md:left-[18px] dark:ring-zinc-600"
+          className="group absolute bottom-[14px] left-[10px] flex h-8 max-w-8 cursor-default items-center overflow-hidden rounded-full bg-black shadow-sm ring-1 ring-zinc-700 transition-all duration-300 ease-out hover:max-w-80 md:bottom-[18px] md:left-[14px] dark:ring-zinc-600"
           title={status.message}
         >
           <span className="flex h-8 w-8 shrink-0 items-center justify-center text-sm leading-none">
