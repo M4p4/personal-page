@@ -1,11 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
-import Image from 'next/image';
 import Project from 'components/project';
 import Posts from 'components/posts/Posts';
 import Headline from 'components/ui/Headline';
 import VoxelHero from 'components/animation/VoxelHero';
+import AvatarStatus from 'components/ui/AvatarStatus';
 import { getAllPosts } from 'lib/MDXLoader';
-import { blurImage } from 'lib/helpers';
 import projects from '../_data/projects.json';
 
 export default function HomePage() {
@@ -40,15 +39,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        <Image
-          className="h-44 w-44 shrink-0 rounded-full border border-slate-300 object-cover md:h-52 md:w-52 dark:border-zinc-700"
-          src="/images/me.jpg"
-          alt="Jaro Ratz"
-          placeholder="blur"
-          blurDataURL={blurImage(240, 240)}
-          width={240}
-          height={240}
-        />
+        <AvatarStatus />
       </div>
 
       <Headline title="About Me" />
