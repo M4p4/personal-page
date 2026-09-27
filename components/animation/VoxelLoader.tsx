@@ -3,6 +3,7 @@
 import React, { Suspense, useLayoutEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
+import AutoRotate from './AutoRotate';
 import VoxelSpinner from './VoxelSpinner';
 import Loki from './Loki';
 import Decor from './Decor';
@@ -36,10 +37,11 @@ const VoxelLoader = () => {
         <ambientLight intensity={1.5} position={[4, 4, 5]} />
         <ambientLight intensity={4.5} position={[1000, 1000, 500]} />
         <Suspense fallback={<VoxelSpinner />}>
-          <Model />
+          <AutoRotate>
+            <Model />
+          </AutoRotate>
         </Suspense>
         <OrbitControls
-          autoRotate
           rotateSpeed={0.35}
           enableZoom={false}
           enablePan={false}
