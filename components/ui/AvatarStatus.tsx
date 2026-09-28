@@ -36,13 +36,13 @@ const AvatarStatus = () => {
       />
       {status && (
         <div
-          className="group absolute bottom-[18px] left-[14px] hidden h-8 max-w-8 cursor-default items-center overflow-hidden rounded-full bg-black shadow-sm ring-1 ring-zinc-700 transition-all duration-300 ease-out hover:max-w-80 md:flex dark:ring-zinc-600"
+          className="group absolute bottom-[18px] left-[14px] hidden h-8 max-w-8 cursor-default items-center overflow-hidden rounded-full bg-orange-100 shadow-sm ring-1 ring-orange-200 transition-all duration-300 ease-out hover:max-w-80 md:flex dark:bg-zinc-800 dark:ring-zinc-700"
           title={status.message}
         >
           <span className="flex h-8 w-8 shrink-0 items-center justify-center text-sm leading-none">
             {status.emoji}
           </span>
-          <span className="pr-3 text-[11px] whitespace-nowrap text-zinc-100 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+          <span className="pr-3 text-[11px] whitespace-nowrap text-zinc-700 opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:text-zinc-300">
             {status.message}
           </span>
         </div>
