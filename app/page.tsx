@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import Project from 'components/project';
+import ProjectCarousel from 'components/project/ProjectCarousel';
 import Posts from 'components/posts/Posts';
 import Headline from 'components/ui/Headline';
 import VoxelHero from 'components/animation/VoxelHero';
@@ -59,9 +59,7 @@ export default function HomePage() {
       </p>
 
       <Headline title="Latest Projects" />
-      {projects.map((project) => (
-        <Project key={project.title} project={project} />
-      ))}
+      <ProjectCarousel projects={projects} />
 
       <Headline title="Latest Posts" />
       <Posts mode="compact" posts={latestPosts} />

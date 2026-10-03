@@ -1,3 +1,4 @@
+import { BookOpenIcon } from '@heroicons/react/24/outline';
 import GithubIcon from 'components/icons/GithubIcon';
 import TagList from 'components/ui/TagList';
 import { blurImage } from 'lib/helpers';
@@ -9,12 +10,15 @@ type Props = {
   project: Project;
 };
 
+const linkClassName =
+  'inline-flex w-fit items-center gap-2 rounded-md border border-slate-300 px-3 py-1.5 text-sm font-medium transition-colors hover:border-orange-600 hover:text-orange-600 dark:border-zinc-600 dark:text-zinc-100 dark:hover:border-orange-400 dark:hover:text-orange-400';
+
 const Project: FC<Props> = ({ project }) => {
-  const { image, title, date, tags, description, github } = project;
+  const { image, title, date, tags, description, github, docs } = project;
   return (
     <div className="flex flex-col gap-4 md:flex-row md:gap-8">
       <Image
-        className="w-full rounded-md object-cover md:w-3/5"
+        className="h-auto w-full rounded-md md:w-3/5 md:self-start"
         src={image}
         alt={title}
         width={900}
@@ -31,16 +35,31 @@ const Project: FC<Props> = ({ project }) => {
         </div>
         <p>{description}</p>
         <TagList tags={tags} />
-        {github && (
-          <a
-            href={github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-auto inline-flex w-fit items-center gap-2 rounded-md border border-slate-300 px-3 py-1.5 text-sm font-medium transition-colors hover:border-orange-600 hover:text-orange-600 dark:border-zinc-600 dark:text-zinc-100 dark:hover:border-orange-400 dark:hover:text-orange-400"
-          >
-            <GithubIcon className="h-4 w-4" />
-            View on GitHub
-          </a>
+        {(github || docs) && (
+          <div className="mt-auto flex flex-wrap gap-2">
+            {github && (
+              <a
+                href={github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkClassName}
+              >
+                <GithubIcon className="h-4 w-4" />
+                View on GitHub
+              </a>
+            )}
+            {docs && (
+              <a
+                href={docs}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkClassName}
+              >
+                <BookOpenIcon className="h-4 w-4" />
+                Docs
+              </a>
+            )}
+          </div>
         )}
       </div>
     </div>

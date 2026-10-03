@@ -27,4 +27,5 @@ export type Project = {
   tags: string[];
   description: string;
   github?: string;
+  docs?: string;
 };
