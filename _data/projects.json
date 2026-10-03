@@ -1,5 +1,14 @@
 [
   {
+    "title": "Django Mail Preview",
+    "tags": ["python", "django", "email", "developer-tools"],
+    "description": "An open-source Django app that shows every email your project sends, rendered in the browser, without sending a single one. It comes with a local inbox and previews built from sample data.",
+    "image": "/images/projects/p2_preview.png",
+    "github": "https://github.com/M4p4/django-mail-preview",
+    "docs": "https://django-mail-preview.readthedocs.io/",
+    "date": "2026"
+  },
+  {
     "title": "Next Tube",
     "tags": ["typescript", "tailwind", "nextjs", "mongodb"],
     "description": "I built this video platform to run as a regular tube site like YouTube or as an adult tube. It has its own search and recommendation engine and scales easily as traffic grows.",
